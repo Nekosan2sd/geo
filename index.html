@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>GeoHunt Japan v0.35</title>
+<title>GeoHunt Japan v0.42</title>
 <link rel="preconnect" href="https://www.google.com">
 <link rel="preconnect" href="https://tile.openstreetmap.org">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -69,8 +69,8 @@ body{background:#02070d;background-image:radial-gradient(circle at 18% 15%,rgba(
   <div class="modal show" id="startModal"><div class="card"><div class="eyebrow">STREET VIEW LOCATION GAME</div><h1>日本を、見抜け。</h1><div class="heroBadges"><span>全国 165,888候補</span><span>検証済み地点のみ</span><span>最大50問</span></div><p>ストリートビューを観察し、日本地図に予想地点を置く最大50問のゲーム。全国16万地点以上の候補から、表示・屋外・前後移動を検証して登録した地点だけを出題します。左上の住所カードだけを隠し、画面下部のGoogleロゴ・著作権・利用規約表示は残します。</p><div class="startgrid"><button class="choice active" data-time="0"><b>探索モード</b><span>時間制限なし</span></button><button class="choice" data-time="60"><b>60秒チャレンジ</b><span>各ラウンド60秒</span></button></div><div class="roundSelector"><b>出題件数</b><div class="roundChoices"><button class="roundChoice" data-rounds="5">5問</button><button class="roundChoice" data-rounds="10">10問</button><button class="roundChoice active" data-rounds="20">20問</button><button class="roundChoice" data-rounds="50">50問</button></div></div><div id="resumeBox" class="resumeBox" hidden><div><b>進行中のゲームがあります</b><span id="resumeInfo">保存データを確認中</span></div><div><button class="primary" id="resumeBtn">再開</button><button class="secondary" id="discardSession">破棄</button></div></div><div id="validStatus" class="validStatus">全国16万地点以上の候補を確認中...</div><div class="registryStats"><span id="validCount">有効 0</span><span id="rejectCount">除外 0</span><span id="remainCount">未検証 0</span><span id="poolCount">候補総数 0</span></div><button class="primary wide startButton" id="startBtn"><span>ゲーム開始</span><small>選択したルールで探索を始める</small></button><button class="secondary wide" id="manageBtn" style="margin-top:9px">有効地点を検証・登録</button><button class="textBtn" id="resetRegistry">検証データを初期化</button><p class="notice">オンライン接続が必要です。Google側の埋め込み仕様や地域の画像状況によっては、地点付近の通常地図または利用不可表示になる場合があります。</p></div></div>
   <div class="modal" id="validateModal"><div class="card validateCard"><h2>有効地点の検証</h2><p>表示できるかに加えて、道路上で前後へ移動できるか確認してください。ゲーム側の地域名・座標に加え、Google側の左上住所カードも検証中は隠します。画面下部の帰属表示は隠しません。「利用できません」または店舗・施設内の室内画像なら除外し、屋外道路のストリートビューだけを登録します。未検証地点はゲームに出ません。</p><div class="validationViewer"><iframe id="validationStreet" title="地点検証用ストリートビュー" allowfullscreen></iframe><div class="locationMask validationLocationMask" aria-hidden="true"><span>LOCATION HIDDEN</span></div></div><div class="validationBlind">ゲーム側の地域名・座標は非表示です</div><div class="validationMeta"><b id="validationName">匿名候補</b><span id="validationProgress">0 / 0</span><small class="validationKeys">A：追加　R：追加しない</small></div><div class="binaryCheck"><b>登録基準</b><span>屋外の一般道路・前後移動可能・ゲームとして出題できる場合は「追加」。それ以外は「追加しない」。</span></div><div class="validationActions binaryActions"><button class="secondary rejectBinary" id="rejectLocation" aria-label="この地点を追加しない">追加しない</button><button class="primary approveBinary" id="approveLocation" aria-label="この地点を追加する">追加</button></div><div class="validationFooter"><button class="secondary" id="undoValidation">1つ戻す</button><button class="secondary" id="closeValidation">検証を終了</button></div></div></div>
   <div class="modal" id="reportModal"><div class="card reportCard"><div class="resultKicker">LOCATION QUALITY</div><h2>この地点を交換</h2><p>問題のある地点を検証済みリストから外し、ラウンド数と得点を変えずに別地点へ交換します。</p><div class="reportGrid"><button class="secondary" data-report="spoiler">地名・住所・施設名が表示</button><button class="secondary" data-report="unavailable">ストリートビュー利用不可</button><button class="secondary" data-report="indoor">室内・投稿型パノラマ</button><button class="secondary" data-report="nomove">前後へ移動できない</button></div><button type="button" class="textBtn" id="cancelReport">キャンセル</button></div></div>
-  <div class="modal" id="systemModal"><div class="card systemCard"><div class="resultKicker">SYSTEM CENTER</div><h2>システム管理</h2><p>進行状況、検証データ、統計をこの端末内で管理します。</p><div class="systemGrid"><div class="systemStat"><span>総プレイ</span><b id="statGames">0</b></div><div class="systemStat"><span>回答ラウンド</span><b id="statRounds">0</b></div><div class="systemStat"><span>平均得点率</span><b id="statRate">0%</b></div><div class="systemStat"><span>最高ランク</span><b id="statRank">-</b></div><div class="systemStat"><span>PERFECT</span><b id="statPerfects">0</b></div><div class="systemStat"><span>最高STREAK</span><b id="statBestStreak">0</b></div><div class="systemStat"><span>地点交換</span><b id="statReports">0</b></div></div><div class="systemStatus"><span id="storageStatus">保存領域を確認中</span><span id="sessionStatus">進行データなし</span><span id="healthStatus">システム診断を準備中</span></div><section class="systemSection"><b>実績</b><div class="achievementGrid" id="achievementGrid"></div></section><section class="systemSection"><b>最近のゲーム</b><div class="recentGames" id="recentGames"></div></section><div class="systemActions"><button class="secondary" id="exportBtn">検証データを書き出す</button><label class="secondary importLabel">検証データを読み込む<input id="importInput" type="file" accept="application/json"></label><button class="secondary" id="clearSessionBtn">進行データを削除</button><button class="secondary dangerText" id="clearStatsBtn">統計を初期化</button></div><button type="button" class="primary wide" id="closeSystem">閉じる</button></div></div>
-  <div class="modal" id="resultModal"><div class="card"><div class="resultKicker">ROUND RESULT</div><h2 id="resultTitle">ラウンド結果</h2><p id="resultPlace"></p><div class="resultstats"><div class="stat"><b id="resultDistance">0 km</b><span>誤差</span></div><div class="stat"><b id="resultScore">0</b><span>ラウンド得点</span></div><div class="stat"><b id="resultTotal">0</b><span>合計</span></div></div><div class="bar"><i id="scoreBar"></i></div><p id="resultComment"></p><div class="exactAnswer" id="exactAnswer"><div><span>正解地点</span><b id="exactPlace">-</b><code id="exactCoords">-</code><div class="answerCompare"><div><span>あなたの回答</span><b id="guessCoords">-</b></div><div><span>正解への方向</span><b id="answerBearing">-</b></div><div><span>精度評価</span><b id="accuracyGrade">-</b></div></div></div><div class="exactActions"><button class="secondary" id="copyCoordsBtn">座標をコピー</button><button class="secondary" id="openMapsBtn">地図アプリで開く</button><button class="primary" id="inspectAnswerBtn">正解地点を拡大</button></div></div><details class="roundHistory" id="roundHistory"><summary>このゲームのラウンド履歴</summary><div id="roundHistoryList"></div></details><button class="primary wide" id="nextBtn">次のラウンド</button></div></div>
+  <div class="modal" id="systemModal"><div class="card systemCard"><div class="resultKicker">SYSTEM CENTER</div><h2>システム管理</h2><p>進行状況、検証データ、統計をこの端末内で管理します。</p><div class="systemGrid"><div class="systemStat"><span>総プレイ</span><b id="statGames">0</b></div><div class="systemStat"><span>回答ラウンド</span><b id="statRounds">0</b></div><div class="systemStat"><span>平均得点率</span><b id="statRate">0%</b></div><div class="systemStat"><span>最高ランク</span><b id="statRank">-</b></div><div class="systemStat"><span>PERFECT</span><b id="statPerfects">0</b></div><div class="systemStat"><span>最高STREAK</span><b id="statBestStreak">0</b></div><div class="systemStat"><span>地点交換</span><b id="statReports">0</b></div></div><div class="systemStatus"><span id="storageStatus">保存領域を確認中</span><span id="sessionStatus">進行データなし</span><span id="playedStatus">プレイ済み地点：0件</span><span id="healthStatus">システム診断を準備中</span><span id="runtimeStatus">実行エラー：0件</span></div><section class="systemSection"><b>実績</b><div class="achievementGrid" id="achievementGrid"></div></section><section class="systemSection"><b>最近のゲーム</b><div class="recentGames" id="recentGames"></div></section><div class="systemActions"><button class="secondary" id="exportBtn">検証データを書き出す</button><label class="secondary importLabel">検証データを読み込む<input id="importInput" type="file" accept="application/json"></label><button class="secondary" id="clearSessionBtn">進行データを削除</button><button class="secondary" id="clearPlayedBtn">プレイ済み地点をリセット</button><button class="secondary dangerText" id="clearStatsBtn">統計を初期化</button></div><button type="button" class="primary wide" id="closeSystem">閉じる</button></div></div>
+  <div class="modal" id="resultModal"><div class="card"><div class="resultKicker">ROUND RESULT</div><h2 id="resultTitle">ラウンド結果</h2><p id="resultPlace"></p><div class="resultstats"><div class="stat"><b id="resultDistance">0 km</b><span>誤差</span></div><div class="stat"><b id="resultScore">0</b><span>ラウンド得点</span></div><div class="stat"><b id="resultTotal">0</b><span>合計</span></div></div><div class="bar"><i id="scoreBar"></i></div><p id="resultComment"></p><div class="exactAnswer" id="exactAnswer"><div><span>出題基準地点</span><b id="exactPlace">-</b><code id="exactCoords">-</code><div class="answerCompare"><div><span>あなたの回答</span><b id="guessCoords">-</b></div><div><span>正解への方向</span><b id="answerBearing">-</b></div><div><span>精度評価</span><b id="accuracyGrade">-</b></div></div></div><div class="exactActions"><button class="secondary" id="copyCoordsBtn">座標をコピー</button><button class="secondary" id="openMapsBtn">地図アプリで開く</button><button class="primary" id="inspectAnswerBtn">出題地点を拡大</button></div></div><details class="roundHistory" id="roundHistory"><summary>このゲームのラウンド履歴</summary><div id="roundHistoryList"></div></details><button class="primary wide" id="nextBtn">次のラウンド</button></div></div>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -160,9 +160,10 @@ const JAPAN_ANCHORS = [
 ];
 const CANDIDATES_PER_AREA = 2048;
 const LOCATION_POOL_SIZE = JAPAN_ANCHORS.length * CANDIDATES_PER_AREA,
-  VALID_KEY = "geohuntJapanValidV4",
-  REJECT_KEY = "geohuntJapanRejectedV4",
-  SESSION_KEY = "geohuntJapanSessionV1",
+  VALID_KEY = "geohuntJapanValidV5",
+  REJECT_KEY = "geohuntJapanRejectedV5",
+  PLAYED_KEY = "geohuntJapanPlayedV2",
+  SESSION_KEY = "geohuntJapanSessionV5",
   STATS_KEY = "geohuntJapanStatsV1";
 function seededRandom(seed) {
   let t = seed + 0x6d2b79f5;
@@ -184,18 +185,37 @@ function readIds(key) {
   }
 }
 function writeIds(key, ids) {
-  localStorage.setItem(key, JSON.stringify([...new Set(ids)]));
+  const clean = [...new Set(ids)].filter((id) => Number.isInteger(id) && id >= 0 && id < LOCATION_POOL_SIZE);
+  try {
+    localStorage.setItem(key, JSON.stringify(clean));
+    return true;
+  } catch (error) {
+    recordRuntimeError(`storage:${key}`, error);
+    toast("地点データを保存できませんでした");
+    return false;
+  }
+}
+function playedSet() {
+  return new Set(readIds(PLAYED_KEY));
+}
+function markPlayed(id) {
+  if (!Number.isInteger(id)) return;
+  const ids = readIds(PLAYED_KEY);
+  if (!ids.includes(id)) {
+    ids.push(id);
+    writeIds(PLAYED_KEY, ids);
+  }
+}
+function freshValidIds() {
+  const played = playedSet();
+  return readIds(VALID_KEY).filter((id) => !played.has(id));
 }
 function pointFromId(id) {
   const area = Math.floor(id / CANDIDATES_PER_AREA),
     base = JAPAN_ANCHORS[area],
     r = seededRandom(id * 7919 + area * 104729),
     angle = r() * Math.PI * 2,
-    band = r(),
-    radius =
-      band < 0.72
-        ? 0.006 + Math.sqrt(r()) * 0.16
-        : 0.16 + Math.sqrt(r()) * 0.34,
+    radius = 0.0012 + Math.sqrt(r()) * 0.0115,
     lat = base[0] + Math.sin(angle) * radius,
     lng =
       base[1] +
@@ -208,10 +228,63 @@ function pointFromId(id) {
     id,
   };
 }
+const runtimeErrors = [];
+function recordRuntimeError(source, error) {
+  const message = error?.message || String(error || "不明なエラー");
+  runtimeErrors.push({ source, message, at: Date.now() });
+  if (runtimeErrors.length > 20) runtimeErrors.shift();
+  const status = $("#runtimeStatus");
+  if (status) {
+    status.textContent = `実行エラー：${runtimeErrors.length}件${runtimeErrors.length ? `（最新：${message.slice(0, 48)}）` : ""}`;
+    status.style.color = runtimeErrors.length
+      ? "var(--danger)"
+      : "var(--green)";
+  }
+}
+function storageAvailable() {
+  try {
+    const key = "__geohunt_test__";
+    localStorage.setItem(key, "1");
+    localStorage.removeItem(key);
+    return true;
+  } catch (error) {
+    recordRuntimeError("storage", error);
+    return false;
+  }
+}
+function sanitizeSession(data) {
+  if (!data || typeof data !== "object") return null;
+  if (!Array.isArray(data.deck) || !data.deck.every(Number.isInteger))
+    return null;
+  if (![5, 10, 20, 50].includes(data.gameRounds)) return null;
+  if (![0, 60].includes(data.timeLimit)) return null;
+  if (
+    !Number.isInteger(data.round) ||
+    data.round < 1 ||
+    data.round > data.gameRounds
+  )
+    return null;
+  data.total = Math.max(0, Number(data.total) || 0);
+  data.streak = Math.max(0, Number(data.streak) || 0);
+  data.timeLeft = Math.max(
+    0,
+    Math.min(data.timeLimit || 0, Number(data.timeLeft) || 0),
+  );
+  data.roundScores = Array.isArray(data.roundScores)
+    ? data.roundScores.map(Number).filter(Number.isFinite)
+    : [];
+  data.roundDetails = Array.isArray(data.roundDetails) ? data.roundDetails : [];
+  return data;
+}
 function safeJSON(key, fallback) {
   try {
-    return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
-  } catch {
+    const raw = localStorage.getItem(key);
+    return raw === null ? fallback : JSON.parse(raw);
+  } catch (error) {
+    recordRuntimeError(`JSON:${key}`, error);
+    try {
+      localStorage.removeItem(key);
+    } catch {}
     return fallback;
   }
 }
@@ -220,7 +293,7 @@ function areaOf(id) {
 }
 function makeJapanDeck(count) {
   const groups = new Map();
-  for (const id of readIds(VALID_KEY)) {
+  for (const id of freshValidIds()) {
     const a = areaOf(id);
     if (!groups.has(a)) groups.set(a, []);
     groups.get(a).push(id);
@@ -273,10 +346,18 @@ function saveSession() {
     roundDetails,
     deck: deck.map((p) => p.id),
     currentId: current.id,
+    displayedId: displayedAnswer?.id ?? null,
+    displayedLat: displayedAnswer?.lat ?? null,
+    displayedLng: displayedAnswer?.lng ?? null,
   };
-  localStorage.setItem(SESSION_KEY, JSON.stringify(data));
-  updateResumeBox();
-  showSavePulse();
+  try {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(data));
+    updateResumeBox();
+    showSavePulse();
+  } catch (error) {
+    recordRuntimeError("session-save", error);
+    toast("進行データを保存できませんでした");
+  }
 }
 function clearSession() {
   localStorage.removeItem(SESSION_KEY);
@@ -296,7 +377,7 @@ function updateResumeBox() {
 function resumeSession() {
   suppressSessionSave = false;
   modalPaused = false;
-  const data = safeJSON(SESSION_KEY, null);
+  const data = sanitizeSession(safeJSON(SESSION_KEY, null));
   if (
     !data ||
     !Array.isArray(data.deck) ||
@@ -328,7 +409,7 @@ function resumeSession() {
 }
 function pickAlternative() {
   const excluded = new Set([current?.id, ...deck.map((p) => p.id)]);
-  const ids = shuffle(readIds(VALID_KEY).filter((id) => !excluded.has(id)));
+  const ids = shuffle(freshValidIds().filter((id) => !excluded.has(id)));
   return ids.length ? pointFromId(ids[0]) : null;
 }
 function validationCandidates(limit = 500) {
@@ -407,6 +488,10 @@ function initMap() {
   }).addTo(map);
   map.on("click", (e) => {
     if (locked) return;
+    if (!answerIntegrityOk()) {
+      toast("ストリートビューの読み込み完了後に回答してください");
+      return;
+    }
     guess = e.latlng;
     if (guessMarker) guessMarker.setLatLng(guess);
     else guessMarker = L.marker(guess).addTo(map);
@@ -417,7 +502,8 @@ function initMap() {
   });
 }
 function streetUrl(p) {
-  return `https://www.google.com/maps?layer=c&cbll=${p.lat},${p.lng}&cbp=12,0,0,0,0&output=svembed`;
+  const coords = `${Number(p.lat).toFixed(6)},${Number(p.lng).toFixed(6)}`;
+  return `https://www.google.com/maps?layer=c&cbll=${encodeURIComponent(coords)}&cbp=12,0,0,0,0&output=svembed`;
 }
 function closeTransientModals(except = "") {
   ["resultModal", "validateModal", "systemModal", "reportModal"].forEach(
@@ -445,10 +531,10 @@ function startGame() {
   gameRounds = Number(
     document.querySelector(".roundChoice.active")?.dataset.rounds || 20,
   );
-  const validCount = readIds(VALID_KEY).length;
+  const validCount = freshValidIds().length;
   if (validCount < gameRounds) {
     toast(
-      `${gameRounds}問モードには有効地点を${gameRounds}件以上登録してください`,
+      `${gameRounds}問モードには未プレイの有効地点が${gameRounds}件以上必要です`,
     );
     openValidation();
     return;
@@ -470,6 +556,45 @@ function startGame() {
   $("#startModal").classList.remove("show");
   $("#spoilerFab").hidden = false;
   nextRound();
+}
+function showStreetFor(point) {
+  if (!point || !Number.isFinite(point.lat) || !Number.isFinite(point.lng)) {
+    recordRuntimeError("street-point", "不正な座標");
+    toast("地点データが不正なため表示できません");
+    return false;
+  }
+  const token = ++streetLoadToken;
+  loadedStreetToken = 0;
+  displayedAnswer = Object.freeze({ ...point });
+  const frame = $("#street"), loading = $("#viewerLoading");
+  clearTimeout(streetLoadTimer);
+  loading.classList.remove("hidden");
+  frame.onload = () => {
+    if (token !== streetLoadToken) return;
+    loadedStreetToken = token;
+    clearTimeout(streetLoadTimer);
+    streetLoadTimer = setTimeout(() => {
+      if (token === streetLoadToken) loading.classList.add("hidden");
+    }, 300);
+  };
+  frame.src = `${streetUrl(displayedAnswer)}&roundToken=${token}&pointId=${displayedAnswer.id}`;
+  streetLoadTimer = setTimeout(() => {
+    if (token !== streetLoadToken) return;
+    loading.classList.add("hidden");
+    toast("表示されない場合は「表示不可」で地点を交換できます");
+  }, 8000);
+  return true;
+}
+function answerIntegrityOk() {
+  if (!current || !displayedAnswer || !Object.isFrozen(displayedAnswer)) return false;
+  if (loadedStreetToken !== streetLoadToken || loadedStreetToken === 0) return false;
+  if (current.id !== displayedAnswer.id) return false;
+  if (!Number.isFinite(displayedAnswer.lat) || !Number.isFinite(displayedAnswer.lng)) return false;
+  return Math.abs(current.lat - displayedAnswer.lat) <= 1e-9 &&
+    Math.abs(current.lng - displayedAnswer.lng) <= 1e-9;
+}
+function answerPoint() {
+  return displayedAnswer || current;
 }
 function nextRound() {
   if (isTransitioning) return;
@@ -496,6 +621,7 @@ function nextRound() {
     return;
   }
   current = deck[round++];
+  markPlayed(current.id);
   usedIds.add(current.id);
   $("#roundText").textContent = `${round} / ${gameRounds}`;
   $("#roundRailFill").style.width = `${((round - 1) / gameRounds) * 100}%`;
@@ -503,12 +629,7 @@ function nextRound() {
   $("#clearBtn").disabled = true;
   $("#guessBtn").setAttribute("aria-disabled", "true");
   $("#pinState").textContent = "地図をクリック";
-  clearTimeout(streetLoadTimer);
-  $("#viewerLoading").classList.remove("hidden");
-  $("#street").src = streetUrl(current);
-  streetLoadTimer = setTimeout(() => {
-    toast("表示されない場合は「表示不可」で地点を交換できます");
-  }, 6500);
+  showStreetFor(current);
   map.setView([37.2, 137.2], 5);
   $("#resultModal").classList.remove("show");
   startTimer(resumeTimePending);
@@ -533,6 +654,11 @@ function startTimer(preserve = false) {
     $("#timerText").textContent = timeLeft;
     if (timeLeft === 0) {
       clearInterval(timer);
+      if (!answerIntegrityOk()) {
+        recordRuntimeError("timeout-integrity", "時間切れ時に地点整合性を確認できません");
+        toast("地点確認に失敗したため、この問題を交換してください");
+        return;
+      }
       timedOut = true;
       toast("時間切れ：0点として処理します");
       submitGuess();
@@ -606,10 +732,11 @@ function renderRoundHistory() {
   host.scrollTop = host.scrollHeight;
 }
 function updateExactAnswer() {
-  if (!current) return;
-  $("#exactPlace").textContent = current.name;
+  const exact = answerPoint();
+  if (!exact) return;
+  $("#exactPlace").textContent = exact.name;
   $("#exactCoords").textContent =
-    `緯度 ${current.lat.toFixed(6)} / 経度 ${current.lng.toFixed(6)}`;
+    `緯度 ${exact.lat.toFixed(6)} / 経度 ${exact.lng.toFixed(6)}`;
   const last = roundDetails.at(-1);
   $("#guessCoords").textContent = last?.timedOut
     ? "時間切れ・未回答"
@@ -622,14 +749,15 @@ function updateExactAnswer() {
   $("#exactAnswer").hidden = false;
 }
 function inspectExactAnswer() {
-  if (!current || !map) return;
+  const exact = answerPoint();
+  if (!exact || !map) return;
   $("#resultModal").classList.remove("show");
   $("#mapCard").classList.remove("collapsed");
   $("#toggleMap").textContent = "縮小";
   $("#answerReturnBtn").hidden = false;
   setTimeout(() => {
     map.invalidateSize();
-    map.setView([current.lat, current.lng], 15);
+    map.setView([exact.lat, exact.lng], 15);
   }, 120);
 }
 function returnToResult() {
@@ -637,11 +765,12 @@ function returnToResult() {
   $("#resultModal").classList.add("show");
 }
 async function copyExactCoords() {
-  if (!current) return;
-  const text = `${current.lat.toFixed(6)}, ${current.lng.toFixed(6)}`;
+  const exact = answerPoint();
+  if (!exact) return;
+  const text = `${exact.lat.toFixed(6)}, ${exact.lng.toFixed(6)}`;
   try {
     await navigator.clipboard.writeText(text);
-    toast("正解座標をコピーしました");
+    toast("出題基準座標をコピーしました");
   } catch {
     const ta = document.createElement("textarea");
     ta.value = text;
@@ -649,40 +778,47 @@ async function copyExactCoords() {
     ta.select();
     document.execCommand("copy");
     ta.remove();
-    toast("正解座標をコピーしました");
+    toast("出題基準座標をコピーしました");
   }
 }
 function openExactInMaps() {
-  if (!current) return;
+  const exact = answerPoint();
+  if (!exact) return;
   window.open(
-    `https://www.google.com/maps?q=${current.lat},${current.lng}`,
+    `https://www.google.com/maps?q=${exact.lat},${exact.lng}`,
     "_blank",
     "noopener,noreferrer",
   );
 }
 function submitGuess() {
+  const scoredPoint = answerPoint();
   $("#exactAnswer").hidden = false;
-  if (locked || (!guess && !timedOut) || !current || !map) return;
+  if (locked || (!guess && !timedOut) || !scoredPoint || !map) return;
+  if (!answerIntegrityOk()) {
+    recordRuntimeError("answer-integrity", "表示地点と採点地点の整合性を確認できません");
+    toast("地点の整合性を確認できないため採点を停止しました。地点を交換してください");
+    return;
+  }
   locked = true;
   clearInterval(timer);
   const d = timedOut
       ? Infinity
-      : distanceKm({ lat: guess.lat, lng: guess.lng }, current),
+      : distanceKm({ lat: guess.lat, lng: guess.lng }, scoredPoint),
     s = timedOut ? 0 : scoreFor(d);
   total += s;
   roundScores.push(s);
   const detail = {
-    place: current.name,
+    place: scoredPoint.name,
     score: s,
     distance: d,
     timedOut,
-    answerLat: current.lat,
-    answerLng: current.lng,
+    answerLat: scoredPoint.lat,
+    answerLng: scoredPoint.lng,
     guessLat: guess?.lat ?? null,
     guessLng: guess?.lng ?? null,
     bearing: timedOut
       ? "―"
-      : bearingTo({ lat: guess.lat, lng: guess.lng }, current),
+      : bearingTo({ lat: guess.lat, lng: guess.lng }, scoredPoint),
     grade: timedOut ? "時間切れ" : accuracyLabel(d, s),
   };
   roundDetails.push(detail);
@@ -691,9 +827,13 @@ function submitGuess() {
   const liveStats = getStats();
   if (s === 5000) liveStats.perfects = (liveStats.perfects || 0) + 1;
   liveStats.bestStreak = Math.max(liveStats.bestStreak || 0, streak);
-  localStorage.setItem(STATS_KEY, JSON.stringify(liveStats));
+  try {
+    localStorage.setItem(STATS_KEY, JSON.stringify(liveStats));
+  } catch (error) {
+    recordRuntimeError("stats-save", error);
+  }
   $("#scoreText").textContent = total.toLocaleString();
-  actualMarker = L.circleMarker([current.lat, current.lng], {
+  actualMarker = L.circleMarker([scoredPoint.lat, scoredPoint.lng], {
     radius: 8,
     color: "#fff",
     weight: 2,
@@ -704,15 +844,15 @@ function submitGuess() {
     resultLine = L.polyline(
       [
         [guess.lat, guess.lng],
-        [current.lat, current.lng],
+        [scoredPoint.lat, scoredPoint.lng],
       ],
       { color: "#57e389", weight: 3, dashArray: "8 8" },
     ).addTo(map);
     map.fitBounds(resultLine.getBounds().pad(0.35));
   } else {
-    map.setView([current.lat, current.lng], 9);
+    map.setView([scoredPoint.lat, scoredPoint.lng], 9);
   }
-  $("#resultPlace").textContent = `正解は ${current.name}`;
+  $("#resultPlace").textContent = `正解は ${scoredPoint.name}`;
   updateExactAnswer();
   $("#resultDistance").textContent = timedOut
     ? "時間切れ"
@@ -799,6 +939,8 @@ function finishGame() {
 }
 function updateValidStatus() {
   const valid = readIds(VALID_KEY).length,
+    played = playedSet(),
+    fresh = readIds(VALID_KEY).filter((id) => !played.has(id)).length,
     rejected = readIds(REJECT_KEY).length,
     remain = Math.max(0, LOCATION_POOL_SIZE - valid - rejected),
     el = $("#validStatus");
@@ -823,7 +965,7 @@ function updateValidStatus() {
     }
   }
   const needed = Number(active?.dataset.rounds || 5);
-  $("#startBtn").disabled = !active || valid < needed;
+  $("#startBtn").disabled = !active || fresh < needed;
   $("#validCount").textContent = `有効 ${valid}`;
   $("#rejectCount").textContent = `除外 ${rejected}`;
   $("#remainCount").textContent = `未検証 ${remain.toLocaleString()}`;
@@ -914,7 +1056,7 @@ function openReport() {
 }
 function replacementPoint() {
   const unavailable = new Set([...usedIds, ...deck.map((p) => p.id)]),
-    ids = shuffle(readIds(VALID_KEY).filter((id) => !unavailable.has(id)));
+    ids = shuffle(freshValidIds().filter((id) => !unavailable.has(id)));
   return ids.length ? pointFromId(ids[0]) : null;
 }
 function reportCurrent(reason) {
@@ -937,6 +1079,7 @@ function reportCurrent(reason) {
   writeIds(VALID_KEY, valid);
   writeIds(REJECT_KEY, rejected);
   current = replacement;
+  markPlayed(current.id);
   deck[round - 1] = replacement;
   usedIds.add(replacement.id);
   guess = null;
@@ -948,9 +1091,7 @@ function reportCurrent(reason) {
   $("#clearBtn").disabled = true;
   $("#guessBtn").setAttribute("aria-disabled", "true");
   $("#pinState").textContent = "地図をクリック";
-  clearTimeout(streetLoadTimer);
-  $("#viewerLoading").classList.remove("hidden");
-  $("#street").src = streetUrl(current);
+  showStreetFor(current);
   map.setView([37.2, 137.2], 5);
   $("#reportModal").classList.remove("show");
   updateValidStatus();
@@ -1008,19 +1149,33 @@ function renderRecentGames(stats) {
     });
 }
 function runHealthCheck() {
+  const ids = [...document.querySelectorAll("[id]")].map((el) => el.id);
   const checks = [
-    typeof L !== "undefined",
-    Boolean(map),
-    Boolean($("#street")),
-    Boolean($("#bgmAudio")),
-    Boolean(localStorage),
-    document.querySelectorAll("[id]").length > 0,
+    ["地図ライブラリ", typeof L !== "undefined"],
+    ["回答マップ", Boolean(map)],
+    ["ストリートビュー", Boolean($("#street"))],
+    ["BGM音源", Boolean($("#bgmAudio")?.src)],
+    ["保存領域", storageAvailable()],
+    ["ID重複なし", ids.length === new Set(ids).size],
+    [
+      "現在地点",
+      !current ||
+        (Number.isFinite(current.lat) && Number.isFinite(current.lng)),
+    ],
+    ["進行範囲", round >= 0 && round <= gameRounds],
+    ["地点整合性", !current || !displayedAnswer || (current.id === displayedAnswer.id && current.lat === displayedAnswer.lat && current.lng === displayedAnswer.lng)],
   ];
-  const passed = checks.filter(Boolean).length;
-  $("#healthStatus").textContent =
-    `システム診断：${passed}/${checks.length} 項目正常`;
-  $("#healthStatus").style.color =
-    passed === checks.length ? "var(--green)" : "var(--gold)";
+  const failed = checks.filter(([, ok]) => !ok).map(([name]) => name);
+  const passed = checks.length - failed.length;
+  $("#healthStatus").textContent = failed.length
+    ? `システム診断：${passed}/${checks.length} 正常（要確認：${failed.join("・")}）`
+    : `システム診断：${passed}/${checks.length} 項目正常`;
+  $("#healthStatus").style.color = failed.length
+    ? "var(--gold)"
+    : "var(--green)";
+  const runtime = $("#runtimeStatus");
+  runtime.textContent = `実行エラー：${runtimeErrors.length}件`;
+  runtime.style.color = runtimeErrors.length ? "var(--danger)" : "var(--green)";
 }
 function openSystem() {
   pauseForModal();
@@ -1035,6 +1190,8 @@ function openSystem() {
   $("#statPerfects").textContent = (stats.perfects || 0).toLocaleString();
   $("#statBestStreak").textContent = (stats.bestStreak || 0).toLocaleString();
   $("#statReports").textContent = (stats.reports || 0).toLocaleString();
+  $("#playedStatus").textContent =
+    `プレイ済み地点：${readIds(PLAYED_KEY).length.toLocaleString()}件`;
   renderAchievements(stats);
   renderRecentGames(stats);
   let storage = "保存領域：利用可能";
@@ -1096,53 +1253,123 @@ async function importRegistry(file) {
     toast("読み込みに失敗しました");
   }
 }
-let bgmFadeTimer = null;
-function fadeBgm(target, duration = 420) {
-  const audio = $("#bgmAudio"),
-    start = audio.volume,
-    started = performance.now();
-  clearInterval(bgmFadeTimer);
-  bgmFadeTimer = setInterval(() => {
-    const p = Math.min(1, (performance.now() - started) / duration);
-    audio.volume = start + (target - start) * p;
-    if (p >= 1) {
-      clearInterval(bgmFadeTimer);
-      bgmFadeTimer = null;
-      if (target === 0) {
-        audio.pause();
-        audio.volume = 0.28;
-      }
+const BGM_VOLUME = 0.28;
+let bgmWanted = false;
+let bgmBusy = false;
+let bgmFadeFrame = 0;
+
+function updateBgmButton(message = "") {
+  const btn = $("#bgmBtn");
+  btn.textContent = bgmWanted ? "BGM ON" : "BGM OFF";
+  btn.classList.toggle("on", bgmWanted);
+  btn.setAttribute("aria-pressed", String(bgmWanted));
+  btn.setAttribute("aria-label", bgmWanted ? "BGMを停止" : "BGMを再生");
+  btn.disabled = bgmBusy;
+  if (message) toast(message);
+}
+
+function cancelBgmFade() {
+  if (bgmFadeFrame) cancelAnimationFrame(bgmFadeFrame);
+  bgmFadeFrame = 0;
+}
+
+function fadeBgm(target, duration = 360, onDone = () => {}) {
+  const audio = $("#bgmAudio");
+  cancelBgmFade();
+  const startVolume = Number.isFinite(audio.volume) ? audio.volume : 0;
+  const startedAt = performance.now();
+  const step = (now) => {
+    const progress = Math.min(1, (now - startedAt) / duration);
+    audio.volume = Math.max(
+      0,
+      Math.min(1, startVolume + (target - startVolume) * progress),
+    );
+    if (progress < 1) bgmFadeFrame = requestAnimationFrame(step);
+    else {
+      bgmFadeFrame = 0;
+      onDone();
     }
-  }, 30);
+  };
+  bgmFadeFrame = requestAnimationFrame(step);
 }
-async function toggleBgm() {
-  const audio = $("#bgmAudio"),
-    btn = $("#bgmBtn");
-  if (!audio.paused) {
-    fadeBgm(0);
-    btn.textContent = "BGM OFF";
-    btn.classList.remove("on");
-    btn.setAttribute("aria-pressed", "false");
-    btn.setAttribute("aria-label", "BGMを再生");
-    toast("BGMをOFFにしました");
-    return;
-  }
-  try {
-    clearInterval(bgmFadeTimer);
-    audio.volume = 0;
-    await audio.play();
-    fadeBgm(0.28, 520);
-    btn.textContent = "BGM ON";
-    btn.classList.add("on");
-    btn.setAttribute("aria-pressed", "true");
-    btn.setAttribute("aria-label", "BGMを停止");
-    toast("BGMをONにしました");
-  } catch {
+
+function stopBgm({ notify = true, reset = false } = {}) {
+  const audio = $("#bgmAudio");
+  bgmWanted = false;
+  bgmBusy = true;
+  updateBgmButton();
+  fadeBgm(0, 260, () => {
     audio.pause();
-    audio.volume = 0.28;
-    toast("BGMを再生できませんでした");
+    if (reset) audio.currentTime = 0;
+    audio.volume = BGM_VOLUME;
+    bgmBusy = false;
+    updateBgmButton(notify ? "BGMをOFFにしました" : "");
+  });
+}
+
+async function startBgm({ notify = true } = {}) {
+  const audio = $("#bgmAudio");
+  if (bgmBusy) return;
+  bgmWanted = true;
+  bgmBusy = true;
+  updateBgmButton();
+  cancelBgmFade();
+  audio.loop = true;
+  audio.muted = false;
+  audio.volume = 0;
+  try {
+    if (audio.ended || !Number.isFinite(audio.currentTime))
+      audio.currentTime = 0;
+    await audio.play();
+    fadeBgm(BGM_VOLUME, 420, () => {
+      if (!bgmWanted) return;
+      bgmBusy = false;
+      updateBgmButton(notify ? "BGMをONにしました" : "");
+    });
+  } catch (error) {
+    bgmWanted = false;
+    bgmBusy = false;
+    audio.pause();
+    audio.volume = BGM_VOLUME;
+    updateBgmButton(
+      "BGMを再生できませんでした。もう一度ボタンを押してください",
+    );
+    console.warn("BGM playback failed", error);
   }
 }
+
+function toggleBgm() {
+  if (bgmBusy) return;
+  if (bgmWanted) stopBgm();
+  else startBgm();
+}
+
+function initializeBgm() {
+  const audio = $("#bgmAudio");
+  cancelBgmFade();
+  bgmWanted = false;
+  bgmBusy = false;
+  audio.pause();
+  audio.currentTime = 0;
+  audio.volume = BGM_VOLUME;
+  audio.loop = true;
+  audio.muted = false;
+  audio.addEventListener("ended", () => {
+    if (!bgmWanted) return;
+    audio.currentTime = 0;
+    audio.play().catch(() => stopBgm({ notify: false }));
+  });
+  audio.addEventListener("error", () => {
+    bgmWanted = false;
+    bgmBusy = false;
+    updateBgmButton("BGM音源の読み込みに失敗しました");
+  });
+  audio.addEventListener("pause", () => {
+    if (bgmWanted && !bgmBusy && !document.hidden) startBgm({ notify: false });
+  });
+  updateBgmButton();
+}
+
 function toast(msg) {
   const t = $("#toast");
   clearTimeout(toastTimer);
@@ -1196,6 +1423,18 @@ $("#clearSessionBtn").onclick = () => {
   clearSession();
   $("#sessionStatus").textContent = "進行データなし";
   toast("保存済みの進行データを削除しました。現在のプレイは継続します");
+};
+$("#clearPlayedBtn").onclick = () => {
+  if (
+    confirm(
+      "プレイ済み地点の記録をリセットしますか？ 次回から過去の地点も再び出題対象になります。",
+    )
+  ) {
+    localStorage.removeItem(PLAYED_KEY);
+    updateValidStatus();
+    openSystem();
+    toast("プレイ済み地点の記録をリセットしました");
+  }
 };
 $("#clearStatsBtn").onclick = () => {
   if (confirm("プレイ統計を初期化しますか？")) {
@@ -1287,10 +1526,7 @@ $("#quitBtn").onclick = () => {
     location.reload();
   }
 };
-$("#street").addEventListener("load", () => {
-  clearTimeout(streetLoadTimer);
-  setTimeout(() => $("#viewerLoading").classList.add("hidden"), 300);
-});
+
 window.addEventListener("keydown", (e) => {
   if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName))
     return;
@@ -1358,17 +1594,33 @@ window.addEventListener("pagehide", () => {
   )
     saveSession();
 });
+window.addEventListener("error", (event) => {
+  recordRuntimeError("window", event.error || event.message);
+});
+window.addEventListener("unhandledrejection", (event) => {
+  recordRuntimeError("promise", event.reason);
+});
 window.addEventListener("load", () => {
-  const bgm = $("#bgmAudio");
-  bgm.pause();
-  bgm.currentTime = 0;
-  bgm.volume = 0.28;
-  $("#bgmBtn").textContent = "BGM OFF";
-  $("#bgmBtn").classList.remove("on");
-  $("#bgmBtn").setAttribute("aria-pressed", "false");
-  initMap();
-  updateResumeBox();
-  updateValidStatus();
+  try {
+    initializeBgm();
+  } catch (error) {
+    recordRuntimeError("bgm-init", error);
+  }
+  try {
+    initMap();
+  } catch (error) {
+    recordRuntimeError("map-init", error);
+  }
+  try {
+    updateResumeBox();
+  } catch (error) {
+    recordRuntimeError("resume-init", error);
+  }
+  try {
+    updateValidStatus();
+  } catch (error) {
+    recordRuntimeError("registry-init", error);
+  }
   $("#bestText").textContent = Number(
     localStorage.getItem(`geohuntJapanBest_${gameRounds}`) || 0,
   ).toLocaleString();
