@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>GeoHunt Japan v0.53</title>
+<title>GeoHunt Japan v0.59</title>
 <link rel="preconnect" href="https://www.google.com" crossorigin>
 <link rel="dns-prefetch" href="//www.google.com">
 <link rel="preconnect" href="https://maps.google.com" crossorigin>
@@ -66,25 +66,30 @@ body{background:#02070d;background-image:radial-gradient(circle at 18% 15%,rgba(
 .savePulse{position:absolute;z-index:655;top:calc(max(12px,env(safe-area-inset-top)) + 70px);left:22px;padding:5px 8px;border-radius:8px;background:rgba(5,20,28,.78);border:1px solid rgba(87,227,137,.15);color:#7fa897;font-size:9px;opacity:0;transform:translateY(-4px);transition:.22s;pointer-events:none}.savePulse.show{opacity:1;transform:none}.systemSection{margin:15px 0}.systemSection>b{display:block;margin-bottom:8px;font-size:12px}.achievementGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.achievement{padding:10px;border-radius:12px;background:#0c1928;border:1px solid var(--line);opacity:.38}.achievement.unlocked{opacity:1;border-color:rgba(87,227,137,.28);background:rgba(87,227,137,.07)}.achievement b,.achievement span{display:block}.achievement b{font-size:11px}.achievement span{margin-top:3px;color:var(--muted);font-size:9px}.recentGames{display:grid;gap:6px;max-height:170px;overflow:auto}.recentGame{display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.045);font-size:10px}.recentGame span{color:var(--muted)}.recentGame b{color:var(--cyan)}@media(max-width:640px){.achievementGrid{grid-template-columns:1fr 1fr}.savePulse{top:auto;bottom:8px;left:8px}}
 .connectionStatus{position:fixed;z-index:680;right:14px;top:calc(max(10px,env(safe-area-inset-top)) + 66px);display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:999px;background:rgba(4,14,23,.82);border:1px solid rgba(255,255,255,.09);color:#9bb0bf;font-size:9px;font-weight:800;pointer-events:none;backdrop-filter:blur(8px);transition:.2s}.connectionStatus i{width:6px;height:6px;border-radius:50%;background:#57e389;box-shadow:0 0 8px rgba(87,227,137,.7)}.connectionStatus.loading i{background:#ffd166;box-shadow:0 0 8px rgba(255,209,102,.7);animation:pulse 1s infinite}.connectionStatus.offline i,.connectionStatus.error i{background:#ff6b7a;box-shadow:0 0 8px rgba(255,107,122,.7)}.addressCredit{color:var(--muted);font-size:8px}.addressCredit a{color:var(--cyan)}@keyframes pulse{50%{opacity:.35}}@media(max-width:700px){.connectionStatus{right:8px;top:auto;bottom:calc(max(8px,env(safe-area-inset-bottom)) + 48px)}}
 
-/* v0.53 loading performance */
+/* v0.55 loading performance */
 #street{display:block}.viewerLoading{will-change:opacity}.mapPanel,.card{contain:layout paint}.modal:not(.show){content-visibility:hidden}.modal.show{content-visibility:visible}
 
-/* v0.53 performance */
+/* v0.55 performance */
 .roundItem,.recentGame,.achievement{content-visibility:auto;contain-intrinsic-size:auto 64px}
 
-/* v0.53 changelog */
+/* v0.55 changelog */
 .changelogCard{width:min(680px,94vw)}.changelogList{display:grid;gap:10px;max-height:min(58vh,520px);overflow:auto;margin:15px 0;padding-right:5px}.changelogList article{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.035)}.changelogList header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:7px}.changelogList header b{color:var(--cyan);font-size:14px}.changelogList time{color:var(--muted);font-size:9px}.changelogList ul{margin:0;padding-left:18px;color:#c4d0da;font-size:11px;line-height:1.75}.changelogList li+li{margin-top:3px}
 
-/* v0.53 lightweight loading game */
-.viewerLoading{pointer-events:auto}.viewerLoading.hidden{pointer-events:none}.dinoLoader{width:min(420px,86vw);text-align:center}.dinoHeader{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;color:#dce8f1}.dinoHeader b{color:var(--green);font-size:12px}.dinoGame{position:relative;height:116px;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:13px;background:linear-gradient(#102437,#07111f);cursor:pointer;touch-action:manipulation;user-select:none;outline:none}.dinoGame:focus-visible{box-shadow:0 0 0 2px var(--cyan)}.dinoGround{position:absolute;left:0;right:0;bottom:20px;height:2px;background:rgba(255,255,255,.34)}.dino{position:absolute;z-index:2;left:32px;bottom:22px;font-size:30px;line-height:1}.cactus{position:absolute;z-index:2;left:0;bottom:22px;color:var(--green);font-size:27px;line-height:1}.dinoHelp{display:block;margin-top:7px;color:var(--muted);font-size:9px}.viewerLoading.hidden .dinoLoader{visibility:hidden}
+/* v0.55 lightweight loading game */
+.viewerLoading{pointer-events:auto}.viewerLoading.hidden{pointer-events:none;visibility:hidden}.loaderRetry{margin:9px auto 0;padding:8px 12px;font-size:11px}.dinoLoader{width:min(420px,86vw);text-align:center}.dinoHeader{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;color:#dce8f1}.dinoHeader b{color:var(--green);font-size:12px}.dinoGame{position:relative;height:116px;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:13px;background:linear-gradient(#102437,#07111f);cursor:pointer;touch-action:manipulation;user-select:none;outline:none}.dinoGame:focus-visible{box-shadow:0 0 0 2px var(--cyan)}.dinoGround{position:absolute;left:0;right:0;bottom:20px;height:2px;background:rgba(255,255,255,.34)}.dino{position:absolute;z-index:2;left:32px;bottom:22px;font-size:30px;line-height:1}.cactus{position:absolute;z-index:2;left:0;bottom:22px;color:var(--green);font-size:27px;line-height:1}.dinoHelp{display:block;margin-top:7px;color:var(--muted);font-size:9px}.viewerLoading.hidden .dinoLoader{visibility:hidden}
 
-/* v0.53 street loading pipeline */
+/* v0.55 street loading pipeline */
 #streetPreload{position:absolute;width:2px;height:2px;left:-9999px;top:-9999px;border:0;opacity:0;pointer-events:none}
+
+/* v0.56 stability */
+.versionBadge{position:fixed;z-index:675;left:10px;bottom:max(8px,env(safe-area-inset-bottom));padding:4px 7px;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(4,14,23,.72);color:#7895a9;font:800 9px/1 system-ui,sans-serif;pointer-events:none;backdrop-filter:blur(8px)}
+.locationMask{width:min(var(--mask-width,430px),95vw);height:var(--mask-height,160px)}
+@media(max-width:700px){.locationMask{--mask-width:360px;--mask-height:138px}.versionBadge{left:8px;bottom:8px}}
 </style>
 </head>
 <body>
-<div class="app">
-  <div id="streetWrap"><iframe id="street" title="Google ストリートビュー" allowfullscreen loading="eager" fetchpriority="high" referrerpolicy="strict-origin-when-cross-origin"></iframe><iframe id="streetPreload" title="次地点先読み" tabindex="-1" aria-hidden="true" loading="eager" fetchpriority="low" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="locationMask gameLocationMask" aria-hidden="true"><span>LOCATION HIDDEN</span></div><div class="viewerLoading" id="viewerLoading"><div class="dinoLoader"><div class="dinoHeader"><small>地点を読み込み中</small><b id="dinoScore">0</b></div><div class="dinoGame" id="dinoGame" role="button" tabindex="0" aria-label="待ち時間用ジャンプゲーム"><div class="dino" id="dino">🦖</div><div class="cactus" id="cactus">▲</div><div class="dinoGround"></div></div><small class="dinoHelp">クリック・タップ・Spaceでジャンプ</small></div></div></div>
+<div class="app"><div class="versionBadge" aria-label="バージョン">v0.59</div>
+  <div id="streetWrap"><iframe id="street" title="Google ストリートビュー" allowfullscreen loading="eager" fetchpriority="high" referrerpolicy="strict-origin-when-cross-origin"></iframe><iframe id="streetPreload" title="次地点先読み" tabindex="-1" aria-hidden="true" loading="eager" fetchpriority="low" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="locationMask gameLocationMask" aria-hidden="true"><span>LOCATION HIDDEN</span></div><div class="viewerLoading" id="viewerLoading"><div class="dinoLoader"><div class="dinoHeader"><small>地点を読み込み中</small><b id="dinoScore">0</b></div><div class="dinoGame" id="dinoGame" role="button" tabindex="0" aria-label="待ち時間用ジャンプゲーム"><div class="dino" id="dino">🦖</div><div class="cactus" id="cactus">▲</div><div class="dinoGround"></div></div><small class="dinoHelp">クリック・タップ・Spaceでジャンプ</small><button type="button" class="secondary loaderRetry" id="loaderRetryBtn" hidden>地点を再読み込み</button></div></div></div>
   <div class="topbar">
     <div class="brand"><div class="logo"><span>G</span></div><div><strong>GeoHunt Japan</strong><small>JAPAN DISCOVERY</small></div></div>
     <div class="metrics"><div class="metric"><b id="roundText">1 / 20</b><span>ROUND</span></div><div class="metric"><b id="scoreText">0</b><span>SCORE</span></div><div class="metric"><b id="timerText">--</b><span>TIME</span></div><div class="metric"><b id="bestText">0</b><span>BEST</span></div><div class="metric compactMetric"><b id="streakText">0</b><span>STREAK</span></div></div>
@@ -95,7 +100,7 @@ body{background:#02070d;background-image:radial-gradient(circle at 18% 15%,rgba(
   <div class="modal show" id="startModal"><div class="card"><div class="eyebrow">STREET VIEW LOCATION GAME</div><h1>日本を、見抜け。</h1><div class="heroBadges"><span>全国 165,888候補</span><span>検証済み地点のみ</span><span>最大50問</span></div><p>ストリートビューを観察し、日本地図に予想地点を置く最大50問のゲーム。全国16万地点以上の候補から、表示・屋外・前後移動を検証して登録した地点だけを出題します。左上の住所カードだけを隠し、画面下部のGoogleロゴ・著作権・利用規約表示は残します。</p><div class="startgrid"><button class="choice active" data-time="0"><b>探索モード</b><span>時間制限なし</span></button><button class="choice" data-time="60"><b>60秒チャレンジ</b><span>各ラウンド60秒</span></button></div><div class="roundSelector"><b>出題件数</b><div class="roundChoices"><button class="roundChoice" data-rounds="5">5問</button><button class="roundChoice" data-rounds="10">10問</button><button class="roundChoice active" data-rounds="20">20問</button><button class="roundChoice" data-rounds="50">50問</button></div></div><div id="resumeBox" class="resumeBox" hidden><div><b>進行中のゲームがあります</b><span id="resumeInfo">保存データを確認中</span></div><div><button class="primary" id="resumeBtn">再開</button><button class="secondary" id="discardSession">破棄</button></div></div><div id="validStatus" class="validStatus">全国16万地点以上の候補を確認中...</div><div class="registryStats"><span id="validCount">有効 0</span><span id="rejectCount">除外 0</span><span id="remainCount">未検証 0</span><span id="poolCount">候補総数 0</span></div><button class="primary wide startButton" id="startBtn"><span>ゲーム開始</span><small>選択したルールで探索を始める</small></button><button class="secondary wide" id="manageBtn" style="margin-top:9px">有効地点を検証・登録</button><button class="textBtn" id="resetRegistry">検証データを初期化</button><p class="notice">オンライン接続が必要です。Google側の埋め込み仕様や地域の画像状況によっては、地点付近の通常地図または利用不可表示になる場合があります。</p></div></div>
   <div class="modal" id="validateModal"><div class="card validateCard"><h2>有効地点の検証</h2><p>表示できるかに加えて、道路上で前後へ移動できるか確認してください。ゲーム側の地域名・座標に加え、Google側の左上住所カードも検証中は隠します。画面下部の帰属表示は隠しません。「利用できません」または店舗・施設内の室内画像なら除外し、屋外道路のストリートビューだけを登録します。未検証地点はゲームに出ません。</p><div class="validationViewer"><iframe id="validationStreet" title="地点検証用ストリートビュー" allowfullscreen loading="lazy" fetchpriority="low" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="locationMask validationLocationMask" aria-hidden="true"><span>LOCATION HIDDEN</span></div></div><div class="validationBlind">ゲーム側の地域名・座標は非表示です</div><div class="validationMeta"><b id="validationName">匿名候補</b><span id="validationProgress">0 / 0</span><small class="validationKeys">A：追加　R：追加しない</small></div><div class="binaryCheck"><b>登録基準</b><span>屋外の一般道路・前後移動可能・ゲームとして出題できる場合は「追加」。それ以外は「追加しない」。</span></div><div class="validationActions binaryActions"><button class="secondary rejectBinary" id="rejectLocation" aria-label="この地点を追加しない">追加しない</button><button class="primary approveBinary" id="approveLocation" aria-label="この地点を追加する">追加</button></div><div class="validationFooter"><button class="secondary" id="undoValidation">1つ戻す</button><button class="secondary" id="closeValidation">検証を終了</button></div></div></div>
   <div class="modal" id="reportModal"><div class="card reportCard"><div class="resultKicker">LOCATION QUALITY</div><h2>この地点を交換</h2><p>問題のある地点を検証済みリストから外し、ラウンド数と得点を変えずに別地点へ交換します。</p><div class="reportGrid"><button class="secondary" data-report="spoiler">地名・住所・施設名が表示</button><button class="secondary" data-report="unavailable">ストリートビュー利用不可</button><button class="secondary" data-report="indoor">室内・投稿型パノラマ</button><button class="secondary" data-report="nomove">前後へ移動できない</button></div><button type="button" class="textBtn" id="cancelReport">キャンセル</button></div></div>
-  <div class="modal" id="changelogModal"><div class="card changelogCard"><div class="resultKicker">CHANGELOG</div><h2>変更履歴</h2><p>GeoHunt Japanの主要な更新内容です。</p><div class="changelogList"><article><header><b>v0.53</b><time>2026-10-22</time></header><ul><li>地点読み込み経路を高速化しました。</li><li>現在地点の表示完了後に次の地点を低優先度で先読みします。</li><li>ゲームの制限時間と秒数処理は変更していません。</li></ul></article><article><header><b>v0.53</b><time>2026-10-22</time></header><ul><li>地点読み込みの強制タイムアウトを廃止しました。</li><li>60秒チャレンジ、時間切れ、自動採点をすべて復元しました。</li><li>地点読み込み中の軽量ジャンプ恐竜ゲームだけを追加しました。</li></ul></article><article><header><b>v0.53</b><time>2026-10-22</time></header><ul><li>地点読み込み表示が消えない問題を修正しました。</li><li>ストリートビューiframeの描画制限を解除しました。</li><li>読み込み表示を最大6秒で必ず解除する保護を追加しました。</li></ul></article><article><header><b>v0.53</b><time>2026-10-22</time></header><ul><li>ゲーム全体の構文とイベント処理を整理しました。</li><li>保存失敗時にゲームが停止しないよう保護を強化しました。</li><li>二重登録されていた実行時エラー監視を統合しました。</li><li>変更履歴画面を追加しました。</li></ul></article><article><header><b>v0.49</b><time>2026-10-22</time></header><ul><li>BGMを96kbpsへ最適化し、HTML容量を大幅に削減しました。</li><li>履歴・実績一覧の画面外描画を軽量化しました。</li></ul></article><article><header><b>v0.48</b><time>2026-10-22</time></header><ul><li>デザインを元の青系テーマへ戻しました。</li><li>高速読み込みと地点整合性検査は維持しました。</li></ul></article><article><header><b>v0.43</b><time>2026-10-22</time></header><ul><li>答え合わせへ日本語住所表示を追加しました。</li><li>邪魔にならない通信状態表示を追加しました。</li></ul></article><article><header><b>v0.41</b><time>2026-10-22</time></header><ul><li>表示地点ID・座標・読込番号の一致確認を追加しました。</li><li>整合性を確認できない場合は採点を停止する方式へ変更しました。</li></ul></article><article><header><b>v0.36</b><time>2026-10-22</time></header><ul><li>一度表示した地点を再出題しない機能を追加しました。</li></ul></article></div><button type="button" class="primary wide" id="closeChangelog">閉じる</button></div></div>
+  <div class="modal" id="changelogModal"><div class="card changelogCard"><div class="resultKicker">CHANGELOG</div><h2>変更履歴</h2><p>GeoHunt Japanの主要な更新内容です。</p><div class="changelogList"><article><header><b>v0.59</b><time>2026-10-23</time></header><ul><li>次ラウンド操作と排他ロックが衝突して進行不能になる問題を修正しました。</li><li>地点検証後に操作ロックが解除されない問題を修正しました。</li><li>オフライン復帰時の同一ラウンド再読み込みを修正しました。</li><li>期限切れセッションで制限時間が復活する問題を修正しました。</li><li>モーダル表示中の経過時間、保存形式移行、地図開閉更新を改善しました。</li></ul></article><article><header><b>v0.58</b><time>2026-10-23</time></header><ul><li>時間切れと地点確認失敗が重なった際の進行不能を自動交換で修正しました。</li><li>再読み込み時にラウンドIDを維持するようにしました。</li><li>保存データへ締切時刻・ラウンド状態を追加し、再開時の地点整合性検査を強化しました。</li><li>固定時間の操作ロックを削減し、オフライン復帰と地図リサイズ処理を強化しました。</li><li>安全なストレージ削除と地点ID範囲検査を追加しました。</li></ul></article><article><header><b>v0.57</b><time>2026-10-23</time></header><ul><li>時間切れ後に通常回答できる問題を修正しました。</li><li>採点成立前に正解情報が表示される問題を修正しました。</li><li>通信復帰時の地点識別情報と監視処理を再設定しました。</li><li>再読み込みボタンの多重実行を防止しました。</li><li>非同期操作ロック、タブ非表示時の時間計算、先読み状態管理を強化しました。</li></ul></article><article><header><b>v0.56</b><time>2026-10-23</time></header><ul><li>地点読み込み状態の未宣言エラーを修正しました。</li><li>ラウンドID・地点ID・読込番号・表示URLの一致確認を強化しました。</li><li>古いiframe読込イベントによる地点ずれと二重処理を防止しました。</li><li>タイマーを締切時刻基準へ変更しました。</li><li>検証データのインポート上限を1MBに設定しました。</li></ul></article><article><header><b>v0.55</b><time>2026-10-22</time></header><ul><li>地点読み込み画面が永久に残る問題を修正しました。</li><li>自動再接続と手動再読み込みを追加しました。</li><li>次ラウンドと再スタートのボタン競合を修正しました。</li></ul></article><article><header><b>v0.55</b><time>2026-10-22</time></header><ul><li>通信断と復帰を自動検知する回復処理を追加しました。</li><li>復帰時は読み込み途中の現在地点だけを一度再接続します。</li><li>低速回線とデータセーバー時は次地点先読みを停止します。</li><li>ゲームの秒数と地点読み込みタイムアウトは変更していません。</li></ul></article><article><header><b>v0.55</b><time>2026-10-22</time></header><ul><li>地点読み込み経路を高速化しました。</li><li>現在地点の表示完了後に次の地点を低優先度で先読みします。</li><li>ゲームの制限時間と秒数処理は変更していません。</li></ul></article><article><header><b>v0.55</b><time>2026-10-22</time></header><ul><li>地点読み込みの強制タイムアウトを廃止しました。</li><li>60秒チャレンジ、時間切れ、自動採点をすべて復元しました。</li><li>地点読み込み中の軽量ジャンプ恐竜ゲームだけを追加しました。</li></ul></article><article><header><b>v0.55</b><time>2026-10-22</time></header><ul><li>地点読み込み表示が消えない問題を修正しました。</li><li>ストリートビューiframeの描画制限を解除しました。</li><li>読み込み表示を最大6秒で必ず解除する保護を追加しました。</li></ul></article><article><header><b>v0.55</b><time>2026-10-22</time></header><ul><li>ゲーム全体の構文とイベント処理を整理しました。</li><li>保存失敗時にゲームが停止しないよう保護を強化しました。</li><li>二重登録されていた実行時エラー監視を統合しました。</li><li>変更履歴画面を追加しました。</li></ul></article><article><header><b>v0.49</b><time>2026-10-22</time></header><ul><li>BGMを96kbpsへ最適化し、HTML容量を大幅に削減しました。</li><li>履歴・実績一覧の画面外描画を軽量化しました。</li></ul></article><article><header><b>v0.48</b><time>2026-10-22</time></header><ul><li>デザインを元の青系テーマへ戻しました。</li><li>高速読み込みと地点整合性検査は維持しました。</li></ul></article><article><header><b>v0.43</b><time>2026-10-22</time></header><ul><li>答え合わせへ日本語住所表示を追加しました。</li><li>邪魔にならない通信状態表示を追加しました。</li></ul></article><article><header><b>v0.41</b><time>2026-10-22</time></header><ul><li>表示地点ID・座標・読込番号の一致確認を追加しました。</li><li>整合性を確認できない場合は採点を停止する方式へ変更しました。</li></ul></article><article><header><b>v0.36</b><time>2026-10-22</time></header><ul><li>一度表示した地点を再出題しない機能を追加しました。</li></ul></article></div><button type="button" class="primary wide" id="closeChangelog">閉じる</button></div></div>
   <div class="modal" id="systemModal"><div class="card systemCard"><div class="resultKicker">SYSTEM CENTER</div><h2>システム管理</h2><p>進行状況、検証データ、統計をこの端末内で管理します。</p><div class="systemGrid"><div class="systemStat"><span>総プレイ</span><b id="statGames">0</b></div><div class="systemStat"><span>回答ラウンド</span><b id="statRounds">0</b></div><div class="systemStat"><span>平均得点率</span><b id="statRate">0%</b></div><div class="systemStat"><span>最高ランク</span><b id="statRank">-</b></div><div class="systemStat"><span>PERFECT</span><b id="statPerfects">0</b></div><div class="systemStat"><span>最高STREAK</span><b id="statBestStreak">0</b></div><div class="systemStat"><span>地点交換</span><b id="statReports">0</b></div></div><div class="systemStatus"><span id="storageStatus">保存領域を確認中</span><span id="sessionStatus">進行データなし</span><span id="playedStatus">プレイ済み地点：0件</span><span id="healthStatus">システム診断を準備中</span><span id="runtimeStatus">実行エラー：0件</span></div><section class="systemSection"><b>実績</b><div class="achievementGrid" id="achievementGrid"></div></section><section class="systemSection"><b>最近のゲーム</b><div class="recentGames" id="recentGames"></div></section><div class="systemActions"><button class="secondary" id="exportBtn">検証データを書き出す</button><label class="secondary importLabel">検証データを読み込む<input id="importInput" type="file" accept="application/json"></label><button class="secondary" id="clearSessionBtn">進行データを削除</button><button class="secondary" id="clearPlayedBtn">プレイ済み地点をリセット</button><button class="secondary dangerText" id="clearStatsBtn">統計を初期化</button></div><button type="button" class="primary wide" id="closeSystem">閉じる</button></div></div>
   <div class="modal" id="resultModal"><div class="card"><div class="resultKicker">ROUND RESULT</div><h2 id="resultTitle">ラウンド結果</h2><p id="resultPlace"></p><div class="resultstats"><div class="stat"><b id="resultDistance">0 km</b><span>誤差</span></div><div class="stat"><b id="resultScore">0</b><span>ラウンド得点</span></div><div class="stat"><b id="resultTotal">0</b><span>合計</span></div></div><div class="bar"><i id="scoreBar"></i></div><p id="resultComment"></p><div class="exactAnswer" id="exactAnswer"><div><span>出題基準地点</span><b id="exactPlace">-</b><small class="addressCredit" id="addressCredit" hidden>住所：<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a></small><code id="exactCoords">-</code><div class="answerCompare"><div><span>あなたの回答</span><b id="guessCoords">-</b></div><div><span>正解への方向</span><b id="answerBearing">-</b></div><div><span>精度評価</span><b id="accuracyGrade">-</b></div></div></div><div class="exactActions"><button class="secondary" id="copyCoordsBtn">座標をコピー</button><button class="secondary" id="openMapsBtn">地図アプリで開く</button><button class="primary" id="inspectAnswerBtn">出題地点を拡大</button></div></div><details class="roundHistory" id="roundHistory"><summary>このゲームのラウンド履歴</summary><div id="roundHistoryList"></div></details><button class="primary wide" id="nextBtn">次のラウンド</button></div></div>
 </div>
@@ -240,6 +245,7 @@ function freshValidIds() {
   return readIds(VALID_KEY).filter((id) => !played.has(id));
 }
 function pointFromId(id) {
+  if (!Number.isInteger(id) || id < 0 || id >= LOCATION_POOL_SIZE) return null;
   const area = Math.floor(id / CANDIDATES_PER_AREA),
     base = JAPAN_ANCHORS[area],
     r = seededRandom(id * 7919 + area * 104729),
@@ -299,28 +305,36 @@ function storageAvailable() {
     return false;
   }
 }
-function sanitizeSession(data) {
+function migrateSession(data) {
   if (!data || typeof data !== "object") return null;
-  if (!Array.isArray(data.deck) || !data.deck.every(Number.isInteger))
-    return null;
-  if (![5, 10, 20, 50].includes(data.gameRounds)) return null;
-  if (![0, 60].includes(data.timeLimit)) return null;
-  if (
-    !Number.isInteger(data.round) ||
-    data.round < 1 ||
-    data.round > data.gameRounds
-  )
-    return null;
+  if (data.version === CURRENT_SAVE_VERSION) return data;
+  if (data.version === 2 || data.version == null) {
+    const migrated = { ...data, version: CURRENT_SAVE_VERSION };
+    migrated.roundStatus = ROUND_STATUS.READY;
+    migrated.timerExpiresAt = migrated.timeLimit && Number(migrated.timeLeft) > 0
+      ? Date.now() + Number(migrated.timeLeft) * 1000 : 0;
+    return migrated;
+  }
+  return null;
+}
+function sanitizeSession(data) {
+  data = migrateSession(data);
+  if (!data || data.version !== CURRENT_SAVE_VERSION) return null;
+  if (!Array.isArray(data.deck) || !data.deck.length || data.deck.length < Number(data.gameRounds) ||
+      !data.deck.every((id) => Number.isInteger(id) && id >= 0 && id < LOCATION_POOL_SIZE)) return null;
+  if (![5, 10, 20, 50].includes(data.gameRounds) || ![0, 60].includes(data.timeLimit)) return null;
+  if (!Number.isInteger(data.round) || data.round < 1 || data.round > data.gameRounds) return null;
+  if (!Number.isInteger(data.currentId) || data.currentId < 0 || data.currentId >= LOCATION_POOL_SIZE) return null;
+  const expectedIndex = Math.max(0, data.round - 1);
+  if (data.deck[expectedIndex] !== data.currentId) return null;
+  if (data.displayedId != null && data.displayedId !== data.currentId) return null;
   data.total = Math.max(0, Number(data.total) || 0);
   data.streak = Math.max(0, Number(data.streak) || 0);
-  data.timeLeft = Math.max(
-    0,
-    Math.min(data.timeLimit || 0, Number(data.timeLeft) || 0),
-  );
-  data.roundScores = Array.isArray(data.roundScores)
-    ? data.roundScores.map(Number).filter(Number.isFinite)
-    : [];
-  data.roundDetails = Array.isArray(data.roundDetails) ? data.roundDetails : [];
+  data.timeLeft = Math.max(0, Math.min(data.timeLimit || 0, Number(data.timeLeft) || 0));
+  data.timerExpiresAt = Number.isFinite(Number(data.timerExpiresAt)) ? Number(data.timerExpiresAt) : 0;
+  data.roundStatus = Object.values(ROUND_STATUS).includes(data.roundStatus) ? data.roundStatus : ROUND_STATUS.READY;
+  data.roundScores = Array.isArray(data.roundScores) ? data.roundScores.map(Number).filter(Number.isFinite).slice(0, data.gameRounds) : [];
+  data.roundDetails = Array.isArray(data.roundDetails) ? data.roundDetails.slice(0, data.gameRounds) : [];
   return data;
 }
 function safeJSON(key, fallback) {
@@ -380,12 +394,15 @@ function showSavePulse() {
 function saveSession() {
   if (suppressSessionSave || !current || round < 1) return;
   const data = {
-    version: 2,
+    version: CURRENT_SAVE_VERSION,
     savedAt: Date.now(),
     phase: locked ? "answered" : "playing",
     gameRounds,
     timeLimit,
     timeLeft,
+    timerExpiresAt: timeLimit && !locked ? (savedTimerDeadline || Date.now() + timeLeft * 1000) : 0,
+    roundStatus,
+    previousRoundId: activeRoundId,
     round,
     total,
     streak,
@@ -397,17 +414,13 @@ function saveSession() {
     displayedLat: displayedAnswer?.lat ?? null,
     displayedLng: displayedAnswer?.lng ?? null,
   };
-  try {
-    localStorage.setItem(SESSION_KEY, JSON.stringify(data));
+  if (safeStore(SESSION_KEY, JSON.stringify(data), "session-save")) {
     updateResumeBox();
     showSavePulse();
-  } catch (error) {
-    recordRuntimeError("session-save", error);
-    toast("進行データを保存できませんでした");
-  }
+  } else toast("進行データを保存できませんでした");
 }
 function clearSession() {
-  localStorage.removeItem(SESSION_KEY);
+  safeRemove(SESSION_KEY, "session-clear");
   updateResumeBox();
 }
 function updateResumeBox() {
@@ -437,8 +450,13 @@ function resumeSession() {
   }
   gameRounds = data.gameRounds;
   timeLimit = data.timeLimit;
-  timeLeft = Number(data.timeLeft || 0);
-  resumeTimePending = Boolean(data.timeLimit && timeLeft > 0);
+  resumeExpiredPending = Boolean(data.timeLimit && data.timerExpiresAt && data.timerExpiresAt <= Date.now());
+  timeLeft = data.timeLimit && data.timerExpiresAt
+    ? Math.max(0, Math.ceil((data.timerExpiresAt - Date.now()) / 1000))
+    : Number(data.timeLeft || 0);
+  savedTimerDeadline = data.timeLimit && timeLeft > 0 ? Date.now() + timeLeft * 1000 : 0;
+  roundStatus = data.roundStatus === ROUND_STATUS.TIMEOUT_FAILED ? ROUND_STATUS.FAILED : ROUND_STATUS.PREPARING;
+  resumeTimePending = Boolean(data.timeLimit && (timeLeft > 0 || resumeExpiredPending));
   round = data.phase === "answered" ? data.round : data.round - 1;
   total = data.total || 0;
   streak = data.streak || 0;
@@ -508,6 +526,23 @@ let toastTimer = null,
   timer = null,
   current = null,
   locked = false;
+
+// v0.56: centralized street-view and round state
+let streetLoadToken = 0,
+  loadedStreetToken = 0,
+  streetLoadInProgress = false,
+  streetRecoveryCount = 0,
+  displayedAnswer = null,
+  preloadedPointId = null,
+  reconnectReloadPending = false,
+  activeRoundId = "",
+  timerDeadline = 0,
+  savedTimerDeadline = 0,
+  preloadRequestId = 0,
+  roundStatus = "idle";
+const ROUND_STATUS = Object.freeze({ IDLE:"idle", PREPARING:"preparing", LOADING:"loading", READY:"ready", SCORING:"scoring", RESULT:"result", FAILED:"failed", TIMEOUT_FAILED:"timeout-failed" });
+const CURRENT_SAVE_VERSION = 3;
+let resumeExpiredPending = false;
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -563,13 +598,55 @@ function nextPreloadPoint() {
   const nextIndex = round + 1;
   return nextIndex >= 0 && nextIndex < deck.length ? deck[nextIndex] : null;
 }
+function connectionIsConstrained() {
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  return Boolean(connection && (connection.saveData || ["slow-2g", "2g"].includes(connection.effectiveType)));
+}
 function preloadNextStreet() {
   const next = nextPreloadPoint();
-  if (!next || next.id === preloadedPointId) return;
+  if (!navigator.onLine || connectionIsConstrained() || !next || next.id === preloadedPointId) return;
   const preload = $("#streetPreload");
+  const requestId = ++preloadRequestId;
+  const url = streetUrl(next);
   preloadedPointId = next.id;
-  try { preload.src = streetUrl(next); }
+  preload.dataset.requestId = String(requestId);
+  preload.dataset.locationId = String(next.id);
+  preload.dataset.expectedUrl = url;
+  preload.onload = () => {
+    if (preload.dataset.requestId !== String(requestId) || preload.dataset.locationId !== String(next.id)) return;
+    preload.dataset.loaded = "true";
+    preload.onload = null;
+  };
+  preload.onerror = () => {
+    if (preload.dataset.requestId !== String(requestId)) return;
+    preloadedPointId = null;
+    preload.dataset.loaded = "false";
+  };
+  try { preload.src = url; }
   catch (error) { preloadedPointId = null; recordRuntimeError("street-preload", error); }
+}
+function suspendBackgroundNetwork() {
+  const preload = $("#streetPreload");
+  preload.onload = null;
+  preload.removeAttribute("src");
+  preloadedPointId = null;
+}
+function reloadCurrentStreetAfterReconnect() {
+  if (!displayedAnswer || !streetLoadInProgress || reconnectReloadPending || !navigator.onLine) return;
+  reconnectReloadPending = true;
+  const frame = $("#street"), token = streetLoadToken;
+  requestAnimationFrame(() => {
+    if (token !== streetLoadToken || !streetLoadInProgress) { reconnectReloadPending = false; return; }
+    setConnectionStatus("loading", "再接続中");
+    const url = streetUrl(displayedAnswer);
+    frame.dataset.loadToken = String(token);
+    frame.dataset.roundId = activeRoundId;
+    frame.dataset.locationId = String(displayedAnswer.id);
+    frame.dataset.expectedUrl = url;
+    try { frame.src = url; armStreetRecovery(token); }
+    catch (error) { recordRuntimeError("street-reconnect", error); finishStreetLoading(token, false); }
+    reconnectReloadPending = false;
+  });
 }
 function closeTransientModals(except = "") {
   [
@@ -582,13 +659,19 @@ function closeTransientModals(except = "") {
     if (id !== except) $("#" + id)?.classList.remove("show");
   });
 }
-function runOnce(action) {
-  if (isTransitioning) return;
+async function runOnce(action) {
+  if (isTransitioning) return false;
   isTransitioning = true;
   try {
-    action();
+    await action();
+    return true;
+  } catch (error) {
+    recordRuntimeError("exclusive-action", error);
+    toast("処理中にエラーが発生しました");
+    return false;
   } finally {
-    setTimeout(() => (isTransitioning = false), 220);
+    await new Promise((resolve) => setTimeout(resolve, 120));
+    isTransitioning = false;
   }
 }
 function startGame() {
@@ -665,60 +748,91 @@ function startDinoGame() {
 function stopDinoGame() {
   dinoRunning = false; cancelAnimationFrame(dinoFrame); dinoFrame = 0;
 }
-function showStreetFor(point) {
-  if (!point || !Number.isFinite(point.lat) || !Number.isFinite(point.lng)) {
-    recordRuntimeError("street-point", "不正な座標");
+function finishStreetLoading(token, confirmed = true) {
+  const frame = $("#street");
+  if (token !== streetLoadToken) return;
+  const accepted = Boolean(confirmed && activeRoundId &&
+    frame.dataset.loadToken === String(token) &&
+    frame.dataset.roundId === activeRoundId &&
+    displayedAnswer && frame.dataset.locationId === String(displayedAnswer.id));
+  clearTimeout(streetLoadTimer);
+  streetLoadTimer = null;
+  loadedStreetToken = accepted ? token : 0;
+  streetLoadInProgress = false;
+  roundStatus = accepted ? ROUND_STATUS.READY : ROUND_STATUS.FAILED;
+  reconnectReloadPending = false;
+  $("#viewerLoading").classList.add("hidden");
+  $("#loaderRetryBtn").hidden = accepted;
+  $("#loaderRetryBtn").disabled = false;
+  stopDinoGame();
+  setConnectionStatus(accepted ? "online" : "warning", accepted ? "通信正常" : "表示状態を確認してください");
+  if (!accepted && confirmed) recordRuntimeError("street-integrity", "読み込み識別子が一致しません");
+}
+function armStreetRecovery(token){clearTimeout(streetLoadTimer);streetLoadTimer=setTimeout(()=>{if(token!==streetLoadToken||!streetLoadInProgress)return;if(!navigator.onLine){streetLoadInProgress=false;loadedStreetToken=0;roundStatus=ROUND_STATUS.FAILED;setConnectionStatus("offline","オフライン・復帰待ち");$("#loaderRetryBtn").hidden=false;$("#loaderRetryBtn").disabled=false;return}if(streetRecoveryCount<1){streetRecoveryCount++;setConnectionStatus("loading","地点を再接続中");const frame=$("#street"),url=streetUrl(displayedAnswer);frame.removeAttribute("src");requestAnimationFrame(()=>{if(token!==streetLoadToken)return;frame.src=url;armStreetRecovery(token)});return}finishStreetLoading(token,false);$("#loaderRetryBtn").hidden=false;toast("読み込みを確認できませんでした。再読み込みまたは地点交換ができます")},12000)}
+function showStreetFor(point, options = {}) {
+  if (!point || !Number.isInteger(point.id) || !Number.isFinite(point.lat) || !Number.isFinite(point.lng) || point.lat < 20 || point.lat > 50 || point.lng < 120 || point.lng > 154) {
+    recordRuntimeError("street-point", "不正な地点データ");
     toast("地点データが不正なため表示できません");
     return false;
   }
   const token = ++streetLoadToken;
+  const preserveRound = options.preserveRound === true;
+  if (!preserveRound || !activeRoundId) activeRoundId = `${Date.now().toString(36)}-${token}-${point.id}`;
   loadedStreetToken = 0;
-  displayedAnswer = Object.freeze({ ...point });
-  const frame = $("#street");
-  const loading = $("#viewerLoading");
+  streetLoadInProgress = true;
+  roundStatus = ROUND_STATUS.LOADING;
+  streetRecoveryCount = 0;
+  reconnectReloadPending = false;
+  displayedAnswer = Object.freeze({ id: point.id, name: String(point.name || ""), lat: Number(point.lat), lng: Number(point.lng) });
+  const frame = $("#street"), loading = $("#viewerLoading"), url = streetUrl(displayedAnswer);
+  frame.dataset.loadToken = String(token);
+  frame.dataset.roundId = activeRoundId;
+  frame.dataset.locationId = String(displayedAnswer.id);
+  frame.dataset.expectedUrl = url;
   clearTimeout(streetLoadTimer);
-  streetLoadTimer = null;
   loading.classList.remove("hidden");
+  $("#loaderRetryBtn").hidden = true;
   startDinoGame();
   frame.onload = () => {
-    if (token !== streetLoadToken) return;
-    loadedStreetToken = token;
-    loading.classList.add("hidden");
-    stopDinoGame();
-    requestAnimationFrame(preloadNextStreet);
+    if (token !== streetLoadToken || frame.dataset.roundId !== activeRoundId) return;
+    finishStreetLoading(token, frame.src === frame.dataset.expectedUrl);
+    if (loadedStreetToken === token) requestAnimationFrame(preloadNextStreet);
   };
-  try {
-    frame.src = streetUrl(displayedAnswer);
-  } catch (error) {
-    loading.classList.add("hidden");
-    stopDinoGame();
-    recordRuntimeError("street-load", error);
-    toast("ストリートビューを読み込めませんでした");
-    return false;
-  }
+  frame.onerror = () => {
+    if (token !== streetLoadToken) return;
+    recordRuntimeError("street-frame", "iframe load error");
+    finishStreetLoading(token, false);
+  };
+  try { frame.src = url; armStreetRecovery(token); }
+  catch (error) { recordRuntimeError("street-load", error); finishStreetLoading(token, false); return false; }
   return true;
 }
+function retryCurrentStreet() {
+  if (!displayedAnswer) return;
+  const button = $("#loaderRetryBtn");
+  if (button.disabled || streetLoadInProgress) return;
+  button.disabled = true;
+  if (!showStreetFor({ ...displayedAnswer }, { preserveRound: true })) button.disabled = false;
+}
 function answerIntegrityOk() {
-  if (!current || !displayedAnswer || !Object.isFrozen(displayedAnswer))
-    return false;
-  if (loadedStreetToken !== streetLoadToken || loadedStreetToken === 0)
-    return false;
+  const frame = $("#street");
+  if (!current || !displayedAnswer || !Object.isFrozen(displayedAnswer) || !activeRoundId) return false;
+  if (roundStatus !== ROUND_STATUS.READY) return false;
+  if (streetLoadInProgress || loadedStreetToken !== streetLoadToken || loadedStreetToken === 0) return false;
+  if (frame.dataset.loadToken !== String(streetLoadToken) || frame.dataset.roundId !== activeRoundId) return false;
+  if (frame.dataset.locationId !== String(current.id) || frame.src !== frame.dataset.expectedUrl) return false;
   if (current.id !== displayedAnswer.id) return false;
-  if (
-    !Number.isFinite(displayedAnswer.lat) ||
-    !Number.isFinite(displayedAnswer.lng)
-  )
-    return false;
-  return (
-    Math.abs(current.lat - displayedAnswer.lat) <= 1e-9 &&
-    Math.abs(current.lng - displayedAnswer.lng) <= 1e-9
-  );
+  return Number.isFinite(displayedAnswer.lat) && Number.isFinite(displayedAnswer.lng) &&
+    Math.abs(Number(current.lat) - displayedAnswer.lat) <= 1e-9 &&
+    Math.abs(Number(current.lng) - displayedAnswer.lng) <= 1e-9;
 }
 function answerPoint() {
   return displayedAnswer || current;
 }
 function nextRound() {
-  if (isTransitioning) return;
+  roundStatus = ROUND_STATUS.PREPARING;
+  $("#nextBtn").dataset.action = "";
+  $("#nextBtn").textContent = "次のラウンド";
   $("#answerReturnBtn").hidden = true;
   $("#spoilerFab").hidden = false;
   clearInterval(timer);
@@ -753,41 +867,42 @@ function nextRound() {
   showStreetFor(current);
   map.setView([37.2, 137.2], 5);
   $("#resultModal").classList.remove("show");
-  startTimer(resumeTimePending);
+  if (resumeExpiredPending) {
+    resumeExpiredPending = false;
+    timeLeft = 0;
+    startTimer(true, true);
+  } else startTimer(resumeTimePending);
   resumeTimePending = false;
   saveSession();
 }
-function startTimer(preserve = false) {
-  clearInterval(timer);
-  if (!timeLimit) {
-    $("#timerText").textContent = "--";
-    return;
-  }
-  if (!preserve || !Number.isFinite(timeLeft) || timeLeft <= 0)
-    timeLeft = timeLimit;
-  $("#timerText").textContent = timeLeft;
-  timer = setInterval(() => {
-    if (locked) {
-      clearInterval(timer);
+function startTimer(preserve = false, forceExpired = false) {
+  clearInterval(timer); timer = null;
+  if (!timeLimit) { timerDeadline = 0; savedTimerDeadline = 0; $("#timerText").textContent = "--"; return; }
+  if (!forceExpired && (!preserve || !Number.isFinite(timeLeft) || timeLeft <= 0)) timeLeft = timeLimit;
+  if (forceExpired) timeLeft = 0;
+  timerDeadline = performance.now() + timeLeft * 1000;
+  savedTimerDeadline = Date.now() + timeLeft * 1000;
+  const tick = () => {
+    if (locked) { clearInterval(timer); timer = null; return; }
+    timeLeft = Math.max(0, Math.ceil((timerDeadline - performance.now()) / 1000));
+    $("#timerText").textContent = timeLeft;
+    if (timeLeft > 0) return;
+    clearInterval(timer); timer = null; timerDeadline = 0; savedTimerDeadline = 0;
+    timedOut = true;
+    if (!answerIntegrityOk()) {
+      locked = true;
+      roundStatus = ROUND_STATUS.TIMEOUT_FAILED;
+      recordRuntimeError("timeout-integrity", "時間切れ時に地点整合性を確認できません");
+      $("#guessBtn").disabled = true;
+      $("#clearBtn").disabled = true;
+      toast("地点確認に失敗したため、この問題を消費せず自動交換します");
+      setTimeout(() => replaceCurrentWithoutPenalty("時間切れ時の地点確認失敗"), 0);
       return;
     }
-    timeLeft = Math.max(0, timeLeft - 1);
-    $("#timerText").textContent = timeLeft;
-    if (timeLeft === 0) {
-      clearInterval(timer);
-      if (!answerIntegrityOk()) {
-        recordRuntimeError(
-          "timeout-integrity",
-          "時間切れ時に地点整合性を確認できません",
-        );
-        toast("地点確認に失敗したため、この問題を交換してください");
-        return;
-      }
-      timedOut = true;
-      toast("時間切れ：0点として処理します");
-      submitGuess();
-    }
-  }, 1000);
+    toast("時間切れ：0点として処理します");
+    submitGuess();
+  };
+  tick(); timer = setInterval(tick, 250);
 }
 function rad(v) {
   return (v * Math.PI) / 180;
@@ -1013,7 +1128,6 @@ function openExactInMaps() {
 }
 function submitGuess() {
   const scoredPoint = answerPoint();
-  $("#exactAnswer").hidden = false;
   if (locked || (!guess && !timedOut) || !scoredPoint || !map) return;
   if (!answerIntegrityOk()) {
     recordRuntimeError(
@@ -1026,7 +1140,12 @@ function submitGuess() {
     return;
   }
   locked = true;
+  roundStatus = ROUND_STATUS.SCORING;
+  $("#exactAnswer").hidden = false;
   clearInterval(timer);
+  timer = null;
+  timerDeadline = 0;
+  savedTimerDeadline = 0;
   const d = timedOut
       ? Infinity
       : distanceKm({ lat: guess.lat, lng: guess.lng }, scoredPoint),
@@ -1100,6 +1219,7 @@ function submitGuess() {
           : "次は道路、文字、植生、太陽の位置を観察しよう。";
   $("#nextBtn").textContent =
     round >= gameRounds ? "最終結果を見る" : "次のラウンド";
+  roundStatus = ROUND_STATUS.RESULT;
   saveSession();
   $("#spoilerFab").hidden = true;
   setTimeout(() => $("#resultModal").classList.add("show"), 500);
@@ -1157,10 +1277,7 @@ function finishGame() {
     `全${gameRounds}ラウンドの結果は下の履歴から確認できます。`;
   $("#roundHistory").open = true;
   $("#nextBtn").textContent = "もう一度遊ぶ";
-  $("#nextBtn").onclick = () => {
-    suppressSessionSave = true;
-    location.reload();
-  };
+  $("#nextBtn").dataset.action = "restart";
   $("#spoilerFab").hidden = true;
   $("#resultModal").classList.add("show");
 }
@@ -1228,53 +1345,82 @@ function showValidationCandidate() {
   $("#approveLocation").disabled = false;
   $("#rejectLocation").disabled = false;
 }
-function decideValidation(valid) {
-  if (isTransitioning) return;
-  const id = validationQueue[validationIndex];
-  if (!Number.isInteger(id)) return;
-  isTransitioning = true;
-  validationHistory.push({ id, valid });
-  const target = valid ? VALID_KEY : REJECT_KEY,
-    list = readIds(target);
-  list.push(id);
-  writeIds(target, list);
-  validationIndex++;
-  updateValidStatus();
-  showValidationCandidate();
-  setTimeout(() => (isTransitioning = false), 180);
-}
-function undoValidation() {
-  const last = validationHistory.pop();
-  if (!last) {
-    toast("戻せる判定がありません");
-    return;
+async function decideValidation(valid) {
+  if (validationBusy) return;
+  validationBusy = true;
+  $("#approveLocation").disabled = true;
+  $("#rejectLocation").disabled = true;
+  $("#undoValidation").disabled = true;
+  try {
+    const id = validationQueue[validationIndex];
+    if (!Number.isInteger(id)) return;
+    validationHistory.push({ id, valid });
+    const target = valid ? VALID_KEY : REJECT_KEY;
+    const list = readIds(target); list.push(id); writeIds(target, list);
+    validationIndex++;
+    updateValidStatus();
+    showValidationCandidate();
+  } finally {
+    validationBusy = false;
+    $("#undoValidation").disabled = validationHistory.length === 0;
   }
-  const target = last.valid ? VALID_KEY : REJECT_KEY;
-  writeIds(
-    target,
-    readIds(target).filter((id) => id !== last.id),
-  );
-  validationIndex = Math.max(0, validationIndex - 1);
-  validationQueue[validationIndex] = last.id;
-  updateValidStatus();
-  showValidationCandidate();
-  toast("直前の判定を取り消しました");
+}
+async function undoValidation() {
+  if (validationBusy) return;
+  validationBusy = true;
+  $("#approveLocation").disabled = true;
+  $("#rejectLocation").disabled = true;
+  $("#undoValidation").disabled = true;
+  try {
+    const last = validationHistory.pop();
+    if (!last) { toast("戻せる判定がありません"); return; }
+    const target = last.valid ? VALID_KEY : REJECT_KEY;
+    writeIds(target, readIds(target).filter((id) => id !== last.id));
+    validationIndex = Math.max(0, validationIndex - 1);
+    validationQueue[validationIndex] = last.id;
+    updateValidStatus();
+    showValidationCandidate();
+    toast("直前の判定を取り消しました");
+  } finally {
+    validationBusy = false;
+    $("#undoValidation").disabled = validationHistory.length === 0;
+  }
 }
 function pauseForModal() {
   if (current && !locked && timeLimit && timer) {
     clearInterval(timer);
     timer = null;
     modalPaused = true;
+    if (!savedTimerDeadline) savedTimerDeadline = Date.now() + timeLeft * 1000;
   }
 }
 function resumeAfterModal() {
   if (modalPaused && current && !locked && timeLimit) {
     modalPaused = false;
-    startTimer(true);
+    timeLeft = Math.max(0, Math.ceil((savedTimerDeadline - Date.now()) / 1000));
+    startTimer(true, timeLeft <= 0);
   } else modalPaused = false;
 }
+async function replaceCurrentWithoutPenalty(reason = "地点読み込み異常") {
+  if (!current || isTransitioning) return false;
+  return runOnce(async () => {
+    const replacement = replacementPoint();
+    if (!replacement) { toast("交換できる未使用地点がありません"); return; }
+    const badId = current.id;
+    const valid = readIds(VALID_KEY).filter((id) => id !== badId);
+    const rejected = readIds(REJECT_KEY); rejected.push(badId);
+    writeIds(VALID_KEY, valid); writeIds(REJECT_KEY, rejected);
+    current = replacement; deck[round - 1] = replacement; usedIds.add(replacement.id); markPlayed(replacement.id);
+    locked = false; timedOut = false; guess = null; roundStatus = ROUND_STATUS.PREPARING;
+    if (guessMarker) { map.removeLayer(guessMarker); guessMarker = null; }
+    $("#guessBtn").disabled = true; $("#clearBtn").disabled = true;
+    $("#guessBtn").setAttribute("aria-disabled", "true"); $("#pinState").textContent = "地図をクリック";
+    showStreetFor(current); map.setView([37.2, 137.2], 5); saveSession();
+    toast(`地点を交換しました：${reason}`);
+  });
+}
 function openReport() {
-  if (!current || locked) {
+  if (!current || (locked && roundStatus !== ROUND_STATUS.TIMEOUT_FAILED)) {
     toast("この画面では地点を交換できません");
     return;
   }
@@ -1286,46 +1432,15 @@ function replacementPoint() {
     ids = shuffle(freshValidIds().filter((id) => !unavailable.has(id)));
   return ids.length ? pointFromId(ids[0]) : null;
 }
-function reportCurrent(reason) {
-  if (!current || locked || isTransitioning) return;
-  const replacement = replacementPoint();
-  if (!replacement) {
-    toast("交換できる未使用地点がありません");
-    $("#reportModal").classList.remove("show");
-    resumeAfterModal();
-    return;
-  }
-  isTransitioning = true;
+async function reportCurrent(reason) {
+  if (!current || (locked && roundStatus !== ROUND_STATUS.TIMEOUT_FAILED) || isTransitioning) return;
   const reportStats = getStats();
   reportStats.reports = (reportStats.reports || 0) + 1;
   safeStore(STATS_KEY, JSON.stringify(reportStats), "stats-save");
-  const badId = current.id,
-    valid = readIds(VALID_KEY).filter((id) => id !== badId),
-    rejected = readIds(REJECT_KEY);
-  rejected.push(badId);
-  writeIds(VALID_KEY, valid);
-  writeIds(REJECT_KEY, rejected);
-  current = replacement;
-  markPlayed(current.id);
-  deck[round - 1] = replacement;
-  usedIds.add(replacement.id);
-  guess = null;
-  if (guessMarker) {
-    map.removeLayer(guessMarker);
-    guessMarker = null;
-  }
-  $("#guessBtn").disabled = true;
-  $("#clearBtn").disabled = true;
-  $("#guessBtn").setAttribute("aria-disabled", "true");
-  $("#pinState").textContent = "地図をクリック";
-  showStreetFor(current);
-  map.setView([37.2, 137.2], 5);
   $("#reportModal").classList.remove("show");
+  modalPaused = false;
+  await replaceCurrentWithoutPenalty(reason);
   updateValidStatus();
-  resumeAfterModal();
-  saveSession();
-  toast(`地点を交換しました：${reason}`);
-  setTimeout(() => (isTransitioning = false), 220);
 }
 const ACHIEVEMENTS = [
   ["first", "初プレイ", "ゲームを1回完走"],
@@ -1462,7 +1577,10 @@ function exportRegistry() {
 }
 async function importRegistry(file) {
   try {
-    const data = JSON.parse(await file.text());
+    if (!file || file.size > 1024 * 1024) throw new Error("ファイルサイズ超過");
+    const raw = await file.text();
+    if (raw.length > 1024 * 1024) throw new Error("データサイズ超過");
+    const data = JSON.parse(raw);
     if (
       data.app !== "GeoHunt Japan" ||
       !Array.isArray(data.valid) ||
@@ -1722,6 +1840,7 @@ $("#inspectAnswerBtn").onclick = inspectExactAnswer;
 $("#answerReturnBtn").onclick = returnToResult;
 $("#copyCoordsBtn").onclick = copyExactCoords;
 $("#openMapsBtn").onclick = openExactInMaps;
+$("#loaderRetryBtn").onclick = retryCurrentStreet;
 $("#dinoGame").onclick = jumpDino;
 $("#dinoGame").onkeydown = (event) => {
   if (event.code === "Space" || event.code === "ArrowUp") jumpDino(event);
@@ -1740,15 +1859,11 @@ $("#clearBtn").onclick = () => {
   $("#guessBtn").setAttribute("aria-disabled", "true");
   $("#pinState").textContent = "地図をクリック";
 };
-$("#nextBtn").onclick = () => {
-  if (isAdvancing) return;
-  isAdvancing = true;
-  $("#nextBtn").disabled = true;
-  nextRound();
-  setTimeout(() => {
-    isAdvancing = false;
-    $("#nextBtn").disabled = false;
-  }, 420);
+$("#nextBtn").onclick = async () => {
+  if (isAdvancing || roundStatus !== ROUND_STATUS.RESULT) return;
+  isAdvancing = true; $("#nextBtn").disabled = true;
+  try { await runOnce(async () => nextRound()); }
+  finally { isAdvancing = false; }
 };
 $("#toggleMap").onclick = () => {
   const c = $("#mapCard");
@@ -1756,7 +1871,7 @@ $("#toggleMap").onclick = () => {
   $("#toggleMap").textContent = c.classList.contains("collapsed")
     ? "展開"
     : "縮小";
-  setTimeout(() => map && map.invalidateSize(), 260);
+  requestAnimationFrame(() => map && map.invalidateSize());
 };
 $("#skipBtn").onclick = openReport;
 $("#focusBtn").onclick = () => {
@@ -1823,12 +1938,22 @@ document.addEventListener("visibilitychange", () => {
       modalPaused = true;
       saveSession();
     }
-  } else if (modalPaused && !document.querySelector(".modal.show"))
-    resumeAfterModal();
+  } else if (modalPaused && !document.querySelector(".modal.show")) {
+    if (savedTimerDeadline && current && !locked && timeLimit) {
+      timeLeft = Math.max(0, Math.ceil((savedTimerDeadline - Date.now()) / 1000));
+      modalPaused = false;
+      if (timeLeft <= 0) {
+        timerDeadline = performance.now();
+        startTimer(true);
+      } else startTimer(true);
+    } else resumeAfterModal();
+  }
 });
-window.addEventListener("resize", () =>
-  setTimeout(() => map && map.invalidateSize(), 120),
-);
+const mapResizeObserver = "ResizeObserver" in window ? new ResizeObserver(() => {
+  requestAnimationFrame(() => map && map.invalidateSize());
+}) : null;
+if (mapResizeObserver && $("#mapCard")) mapResizeObserver.observe($("#mapCard"));
+window.addEventListener("resize", () => requestAnimationFrame(() => map && map.invalidateSize()));
 window.addEventListener("pagehide", () => {
   if (
     !suppressSessionSave &&
@@ -1838,12 +1963,35 @@ window.addEventListener("pagehide", () => {
   )
     saveSession();
 });
-window.addEventListener("online", () =>
-  setConnectionStatus("online", "通信正常"),
-);
-window.addEventListener("offline", () =>
-  setConnectionStatus("offline", "オフライン"),
-);
+window.addEventListener("online", () => {
+  if (streetLoadInProgress || reconnectReloadPending) return;
+  if (roundStatus === ROUND_STATUS.FAILED && displayedAnswer) {
+    setConnectionStatus("loading", "再接続中");
+    showStreetFor({ ...displayedAnswer }, { preserveRound: true });
+    return;
+  }
+  setConnectionStatus("online", "通信正常");
+  reloadCurrentStreetAfterReconnect();
+});
+window.addEventListener("offline", () => {
+  setConnectionStatus("offline", "オフライン・復帰待ち");
+  clearTimeout(streetLoadTimer); streetLoadTimer = null;
+  if (streetLoadInProgress) {
+    streetLoadInProgress = false;
+    loadedStreetToken = 0;
+    roundStatus = ROUND_STATUS.FAILED;
+    $("#loaderRetryBtn").hidden = false;
+    $("#loaderRetryBtn").disabled = false;
+  }
+  reconnectReloadPending = false;
+  suspendBackgroundNetwork();
+});
+const networkConnection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+networkConnection?.addEventListener?.("change", () => {
+  if (!navigator.onLine) return;
+  if (connectionIsConstrained()) suspendBackgroundNetwork();
+  else if (!streetLoadInProgress) requestAnimationFrame(preloadNextStreet);
+});
 window.addEventListener("error", (event) => {
   const message = String(event.message || event.error?.message || "");
   if (message.includes("Leaflet"))
@@ -1856,7 +2004,7 @@ window.addEventListener("unhandledrejection", (event) => {
 window.addEventListener("load", () => {
   setConnectionStatus(
     navigator.onLine ? "online" : "offline",
-    navigator.onLine ? "通信正常" : "オフライン",
+    navigator.onLine ? "通信正常" : "オフライン・復帰待ち",
   );
   try {
     initializeBgm();
