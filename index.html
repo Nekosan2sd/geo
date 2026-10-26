@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>GeoHunt Japan v0.87</title>
+<title>GeoHunt Japan v0.88</title>
 <link rel="preconnect" href="https://www.google.com" crossorigin>
 <link rel="dns-prefetch" href="//www.google.com">
 <link rel="preconnect" href="https://maps.google.com" crossorigin>
@@ -202,7 +202,7 @@ button,.choice,.roundChoice,.iconbtn{font-size:var(--text-sm)}button{min-height:
 })();
 </script>
 
-<div id="roundIntro" class="roundIntro" aria-live="polite" aria-hidden="true"><div class="roundIntroBox"><small id="roundIntroLabel">ROUND</small><b id="roundIntroNumber">1</b><span id="roundIntroAction">READY</span></div></div><div id="roundStateBadge" class="roundStateBadge" data-state="idle">待機中</div><div id="titleToast" class="titleToast" role="status" aria-live="polite"><small>称号を獲得！</small><b id="titleToastName">-</b><span id="titleToastDescription">-</span></div><div class="app"><div class="versionBadge" aria-label="バージョン">v0.87</div>
+<div id="roundIntro" class="roundIntro" aria-live="polite" aria-hidden="true"><div class="roundIntroBox"><small id="roundIntroLabel">ROUND</small><b id="roundIntroNumber">1</b><span id="roundIntroAction">READY</span></div></div><div id="roundStateBadge" class="roundStateBadge" data-state="idle">待機中</div><div id="titleToast" class="titleToast" role="status" aria-live="polite"><small>称号を獲得！</small><b id="titleToastName">-</b><span id="titleToastDescription">-</span></div><div class="app"><div class="versionBadge" aria-label="バージョン">v0.88</div>
   <!-- ===== Street View ===== -->
 <div id="streetWrap"><iframe id="street" title="Google ストリートビュー" allowfullscreen loading="eager" fetchpriority="high" referrerpolicy="strict-origin-when-cross-origin"></iframe><iframe id="streetPreload" title="次地点先読み" tabindex="-1" aria-hidden="true" loading="eager" fetchpriority="low" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="locationMask gameLocationMask" aria-hidden="true"><span>LOCATION HIDDEN</span></div><div class="viewerLoading" id="viewerLoading"><div class="dinoLoader"><div class="dinoHeader"><small>地点を読み込み中</small><b id="dinoScore">0</b></div><div class="dinoGame" id="dinoGame" role="button" tabindex="0" aria-label="待ち時間用ジャンプゲーム"><div class="dino" id="dino">🦖</div><div class="cactus" id="cactus">▲</div><div class="dinoGround"></div></div><small class="dinoHelp">クリック・タップ・Spaceでジャンプ</small><button type="button" class="secondary loaderRetry" id="loaderRetryBtn" hidden>地点を再読み込み</button></div></div></div>
   <div class="topbar">
@@ -274,7 +274,7 @@ button,.choice,.roundChoice,.iconbtn{font-size:var(--text-sm)}button{min-height:
   <!-- Location skip modal -->
 <div class="modal" id="reportModal"><div class="card reportCard"><div class="resultKicker">LOCATION QUALITY</div><h2>この地点をスキップ</h2><p>問題のある地点を検証済みリストから外し、ラウンド数と得点を変えずに別地点へ交換します。</p><p class="skipCounter" id="skipCounter">スキップ残り <strong>3</strong> 回</p><div class="reportGrid"><button class="secondary" data-report="spoiler">地名・住所・施設名が表示</button><button class="secondary" data-report="unavailable">ストリートビュー利用不可</button><button class="secondary" data-report="indoor">室内・投稿型パノラマ</button><button class="secondary" data-report="nomove">前後へ移動できない</button></div><button type="button" class="textBtn" id="cancelReport">キャンセル</button></div></div>
   <!-- Changelog modal -->
-<div class="modal" id="changelogModal"><div class="card changelogCard"><div class="resultKicker">CHANGELOG</div><h2>変更履歴</h2><p>GeoHunt Japanの主要な更新内容です。</p><div class="changelogList"><article><header><b>v0.87</b><time>2026-10-25</time></header><ul><li>プレイ順に残っていた開始・採点・最終結果・保存再開の進行不能を修正しました。</li><li>地点数とデッキの検査を地図読み込みより前へ移動し、成功後だけゲーム状態を初期化します。</li><li>採点処理と最終結果更新を例外保護し、失敗時も復旧またはメニュー復帰できるようにしました。</li><li>保存データへ次ラウンド位置とリビジョンを追加し、無効な保存デッキを再開しないようにしました。</li></ul></article><article><header><b>v0.86</b><time>2026-10-25</time></header><ul><li>検証済み5件なのに6件目を要求する開始判定のずれを修正しました。</li><li>開始可否を未プレイ件数ではなく検証済み総数で判定するように統一しました。</li><li>未プレイ地点を優先し、不足時のみプレイ済みの検証済み地点を再利用するようにしました。</li><li>開始表示、ラウンド選択、デッキ生成で同じ件数基準を使用するようにしました。</li></ul></article><article><header><b>v0.80</b><time>2026-10-25</time></header><ul><li>メインメニューへパスワード保護されたデバッグモードを追加しました。</li><li>称号・実績・ランク・パスポート・メダルの「ほとんど解除」と「全解除」を追加しました。</li><li>最初のデバッグ操作前の記録を自動バックアップし、復元できるようにしました。</li><li>認証5回失敗時の30秒ロックとデバッグ変更フラグを追加しました。</li></ul></article><article><header><b>v0.78</b><time>2026-10-25</time></header><ul><li>出題地点の拡大中に自動進行が動き、結果画面へ戻った後に次へ進めなくなる問題を修正しました。</li><li>地点拡大時は自動進行を停止し、結果へ戻った後に再予約するようにしました。</li><li>拡大中のラウンドIDを検証し、古い結果画面が再表示されないようにしました。</li><li>次ラウンド、最終結果、メインメニュー復帰時に拡大用タイマーを解除するようにしました。</li></ul></article><article><header><b>v0.77</b><time>2026-10-25</time></header><ul><li>BGM ON時に大容量Data URIの処理で画面が固まる問題を修正しました。</li><li>BGM音源を小分けに復号し、処理の合間に画面更新を挟むようにしました。</li><li>音源をBlob URLへ変換し、再生開始に5秒のタイムアウトを追加しました。</li><li>BGMの自動再開ループと長いフェード待機を廃止しました。</li></ul></article><article><header><b>v0.76</b><time>2026-10-25</time></header><ul><li>文字サイズを6段階、余白を8px基準へ統一しました。</li><li>メインメニュー、ゲーム情報バー、回答操作、結果画面の情報優先度を整理しました。</li><li>スマートフォンの回答操作を画面下部へ固定しました。</li><li>結果画面の座標・方角・詳細操作を折りたたみ表示へ変更しました。</li><li>称号・ランク・パスポート・メダルギャラリーの可読性を改善しました。</li><li>更新履歴を直近10バージョンのみ表示するようにしました。</li></ul></article><article><header><b>v0.75</b><time>2026-10-25</time></header><ul><li>メインメニューへ称号・観測員ランク・探索パスポート・記録メダルの4ギャラリーを追加しました。</li><li>各カードから対応するギャラリータブを直接開けるようにしました。</li><li>ギャラリーを閉じるとメインメニューへ戻るようにしました。</li><li>メインメニューへ称号獲得数と現在ランクを表示するようにしました。</li></ul></article><article><header><b>v0.74</b><time>2026-10-25</time></header><ul><li>最終結果の「もう一度遊ぶ」が反応しない問題を修正しました。</li><li>全ラウンド終了後はメインメニューへ戻るように変更しました。</li><li>復帰時にタイマー・自動進行・状態・保存データを安全に初期化します。</li></ul></article><article><header><b>v0.73</b><time>2026-10-25</time></header><ul><li>開始前演出の二重起動と停止を修正しました。</li><li>古いREADY・GOタイマーを世代番号で無効化するようにしました。</li><li>READY 0.5秒、GO 0.26秒へ短縮して最適化しました。</li></ul></article><article><header><b>v0.72</b><time>2026-10-25</time></header><ul><li>回答マップのデザインは変更せず、Leaflet読込経路を3系統へ強化しました。</li><li>学校プロキシで失敗しやすいCDNのCORS指定を外しました。</li><li>地図領域のサイズ確定後に初期化し、失敗時は最大2回再試行するようにしました。</li><li>マップ初期化例外を捕捉して診断ログへ記録するようにしました。</li></ul></article></div><button type="button" class="primary wide" id="closeChangelog">閉じる</button></div></div>
+<div class="modal" id="changelogModal"><div class="card changelogCard"><div class="resultKicker">CHANGELOG</div><h2>変更履歴</h2><p>GeoHunt Japanの主要な更新内容です。</p><div class="changelogList"><article><header><b>v0.88</b><time>2026-10-25</time></header><ul><li>起動時の地図先読みが開始ボタンを無効化する問題を修正しました。</li><li>地点不足時も開始ボタンを押せるようにし、登録画面へ案内します。</li><li>開始処理中以外は開始ボタンを常に操作可能にしました。</li></ul></article><article><header><b>v0.87</b><time>2026-10-25</time></header><ul><li>プレイ順に残っていた開始・採点・最終結果・保存再開の進行不能を修正しました。</li><li>地点数とデッキの検査を地図読み込みより前へ移動し、成功後だけゲーム状態を初期化します。</li><li>採点処理と最終結果更新を例外保護し、失敗時も復旧またはメニュー復帰できるようにしました。</li><li>保存データへ次ラウンド位置とリビジョンを追加し、無効な保存デッキを再開しないようにしました。</li></ul></article><article><header><b>v0.86</b><time>2026-10-25</time></header><ul><li>検証済み5件なのに6件目を要求する開始判定のずれを修正しました。</li><li>開始可否を未プレイ件数ではなく検証済み総数で判定するように統一しました。</li><li>未プレイ地点を優先し、不足時のみプレイ済みの検証済み地点を再利用するようにしました。</li><li>開始表示、ラウンド選択、デッキ生成で同じ件数基準を使用するようにしました。</li></ul></article><article><header><b>v0.80</b><time>2026-10-25</time></header><ul><li>メインメニューへパスワード保護されたデバッグモードを追加しました。</li><li>称号・実績・ランク・パスポート・メダルの「ほとんど解除」と「全解除」を追加しました。</li><li>最初のデバッグ操作前の記録を自動バックアップし、復元できるようにしました。</li><li>認証5回失敗時の30秒ロックとデバッグ変更フラグを追加しました。</li></ul></article><article><header><b>v0.78</b><time>2026-10-25</time></header><ul><li>出題地点の拡大中に自動進行が動き、結果画面へ戻った後に次へ進めなくなる問題を修正しました。</li><li>地点拡大時は自動進行を停止し、結果へ戻った後に再予約するようにしました。</li><li>拡大中のラウンドIDを検証し、古い結果画面が再表示されないようにしました。</li><li>次ラウンド、最終結果、メインメニュー復帰時に拡大用タイマーを解除するようにしました。</li></ul></article><article><header><b>v0.77</b><time>2026-10-25</time></header><ul><li>BGM ON時に大容量Data URIの処理で画面が固まる問題を修正しました。</li><li>BGM音源を小分けに復号し、処理の合間に画面更新を挟むようにしました。</li><li>音源をBlob URLへ変換し、再生開始に5秒のタイムアウトを追加しました。</li><li>BGMの自動再開ループと長いフェード待機を廃止しました。</li></ul></article><article><header><b>v0.76</b><time>2026-10-25</time></header><ul><li>文字サイズを6段階、余白を8px基準へ統一しました。</li><li>メインメニュー、ゲーム情報バー、回答操作、結果画面の情報優先度を整理しました。</li><li>スマートフォンの回答操作を画面下部へ固定しました。</li><li>結果画面の座標・方角・詳細操作を折りたたみ表示へ変更しました。</li><li>称号・ランク・パスポート・メダルギャラリーの可読性を改善しました。</li><li>更新履歴を直近10バージョンのみ表示するようにしました。</li></ul></article><article><header><b>v0.75</b><time>2026-10-25</time></header><ul><li>メインメニューへ称号・観測員ランク・探索パスポート・記録メダルの4ギャラリーを追加しました。</li><li>各カードから対応するギャラリータブを直接開けるようにしました。</li><li>ギャラリーを閉じるとメインメニューへ戻るようにしました。</li><li>メインメニューへ称号獲得数と現在ランクを表示するようにしました。</li></ul></article><article><header><b>v0.74</b><time>2026-10-25</time></header><ul><li>最終結果の「もう一度遊ぶ」が反応しない問題を修正しました。</li><li>全ラウンド終了後はメインメニューへ戻るように変更しました。</li><li>復帰時にタイマー・自動進行・状態・保存データを安全に初期化します。</li></ul></article><article><header><b>v0.73</b><time>2026-10-25</time></header><ul><li>開始前演出の二重起動と停止を修正しました。</li><li>古いREADY・GOタイマーを世代番号で無効化するようにしました。</li><li>READY 0.5秒、GO 0.26秒へ短縮して最適化しました。</li></ul></article></div><button type="button" class="primary wide" id="closeChangelog">閉じる</button></div></div>
   <!-- Collection gallery modal -->
 <div class="modal" id="galleryModal"><div class="card galleryCard">
   <div class="resultKicker">COLLECTION GALLERY</div>
@@ -1027,19 +1027,17 @@ async function ensureLeafletLoaded() {
 }
 
 function updateStartButtonState(message = "") {
-  const button = $("#startBtn");
-  const label = button?.querySelector("span");
+  const button = $("#startBtn"), label = button?.querySelector("span");
   if (!button || !label) return;
   if (gameStartInProgress) {
     button.disabled = true;
-    label.textContent = "ゲームを開始中...";
-  } else if (mapInitializationPromise || leafletLoadPromise || leafletStylePromise) {
-    button.disabled = true;
-    label.textContent = message || "マップを準備中...";
-  } else {
-    label.textContent = "ゲーム開始";
-    updateValidStatus();
+    label.textContent = message || "ゲームを開始中...";
+    button.setAttribute("aria-busy", "true");
+    return;
   }
+  button.disabled = false;
+  button.removeAttribute("aria-busy");
+  label.textContent = "ゲーム開始";
 }
 
 let mapResizeFrame = null;
@@ -2235,38 +2233,29 @@ function finishGame() {
   }
 }
 function updateValidStatus() {
-  const valid = startCapacity();
-  const fresh = freshValidIds().length;
+  const valid = startCapacity(), fresh = freshValidIds().length;
   const rejected = readIds(REJECT_KEY).length;
   const remain = Math.max(0, LOCATION_POOL_SIZE - valid - rejected);
-  const el = $("#validStatus");
-  el.textContent = `検証済み ${valid}件${valid < 5 ? "（最低5件必要）" : `・${valid}問まで選択可能`}`;
-  el.classList.toggle("ready", valid >= 5);
+  const status = $("#validStatus");
+  status.textContent = `検証済み ${valid}件${valid < 5 ? `（5問まであと${5-valid}件）` : `・${valid}問まで選択可能`}`;
+  status.classList.toggle("ready", valid >= 5);
   document.querySelectorAll(".roundChoice").forEach((button) => {
-    const rounds = Number(button.dataset.rounds);
-    button.disabled = valid < rounds;
-    button.title = button.disabled ? `${rounds}問には検証済み地点が${rounds}件必要です` : "";
+    const rounds = Number(button.dataset.rounds), insufficient = valid < rounds;
+    button.disabled = false;
+    button.classList.toggle("insufficient", insufficient);
+    button.setAttribute("aria-disabled", String(insufficient));
+    button.title = insufficient ? `${rounds}問にはあと${rounds-valid}件必要です` : "";
   });
   let active = document.querySelector(".roundChoice.active");
-  if (active?.disabled) {
-    const available = [...document.querySelectorAll(".roundChoice:not(:disabled)")];
-    document.querySelectorAll(".roundChoice").forEach((button) => button.classList.remove("active"));
-    active = available.at(-1) || null;
-    if (active) {
-      active.classList.add("active");
-      gameRounds = Number(active.dataset.rounds);
-      $("#roundText").textContent = `1 / ${gameRounds}`;
-    }
+  if (!active) {
+    active = document.querySelector('.roundChoice[data-rounds="5"]') || document.querySelector(".roundChoice");
+    active?.classList.add("active");
   }
-  const needed = Number(active?.dataset.rounds || 5);
-  const button = $("#startBtn");
-  button.disabled = !active || valid < needed || gameStartInProgress;
-  const help = button.querySelector("small");
-  if (help) help.textContent = valid < needed
-    ? `不足：検証済み地点をあと${Math.max(0, needed - valid)}件登録`
-    : fresh < needed
-      ? `検証済み${needed}件で開始可能・一部地点を再利用`
-      : "選択したルールで探索を始める";
+  gameRounds = Number(active?.dataset.rounds || 5);
+  $("#roundText").textContent = `1 / ${gameRounds}`;
+  const startButton = $("#startBtn"), help = startButton?.querySelector("small");
+  if (startButton && !gameStartInProgress) startButton.disabled = false;
+  if (help) help.textContent = valid < gameRounds ? `押すと地点登録へ移動・あと${gameRounds-valid}件必要` : fresh < gameRounds ? `検証済み${gameRounds}件で開始可能・一部地点を再利用` : "選択したルールで探索を始める";
   $("#validCount").textContent = `有効 ${valid}`;
   $("#rejectCount").textContent = `除外 ${rejected}`;
   $("#remainCount").textContent = `未検証 ${remain.toLocaleString()}`;
@@ -3120,6 +3109,7 @@ function bindEvents() {
           .querySelectorAll(".choice")
           .forEach((x) => x.classList.remove("active"));
         b.classList.add("active");
+        updateValidStatus();
       }),
   );
   $("#inspectAnswerBtn").onclick = inspectExactAnswer;
@@ -3131,7 +3121,8 @@ function bindEvents() {
   $("#dinoGame").onkeydown = (event) => {
     if (event.code === "Space" || event.code === "ArrowUp") jumpDino(event);
   };
-  $("#startBtn").onclick = startGame;
+  $("#startBtn").disabled = false;
+  $("#startBtn").onclick = (event) => { event.preventDefault(); void startGame(); };
   $("#guessBtn").onclick = submitGuess;
   $("#clearBtn").onclick = () => {
     if (locked) return;
@@ -3303,9 +3294,6 @@ const networkConnection = extendedNavigator.connection || extendedNavigator.mozC
     } catch (error) {
       recordRuntimeError("bgm-init", error);
     }
-    ensureAnswerMapReady().then((ready) => {
-      if (!ready) recordRuntimeError("map-init", "Leafletを読み込めませんでした");
-    }).catch((error) => recordRuntimeError("map-init", error));
     try {
       updateResumeBox();
     } catch (error) {
